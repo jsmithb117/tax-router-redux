@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
 import SimpleInput from "../components/SimpleInput";
-import { updateFilingYear } from "./yearSlice";
+import { updateFilingYear } from "../store/slices/yearSlice";
 import { ROUTES } from '../resources/routes-constants'
 import { useNavigate } from 'react-router-dom'
 
@@ -18,7 +18,6 @@ const Year = () => {
     navigate(ROUTES.STATUS_ROUTE);
   };
 
-  console.log('year: ', year)
   return (
     <div className="input-year">
       <SimpleInput

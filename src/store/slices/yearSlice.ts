@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { yearStore } from '../store/defaultStore';
-
-import { RootState } from '../store/store';
+import { yearStore } from '../defaultStore';
+import { RootState } from '../store';
 
 export const yearSlice = createSlice({
   name: 'year',
