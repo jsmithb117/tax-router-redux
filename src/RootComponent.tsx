@@ -8,7 +8,8 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import Year from './pages/Year'
 import Status from './pages/Status';
-import Incomes from './pages/Incomes';
+import IncomeLabel from './pages/IncomeLabel';
+import IncomeFrequency from './pages/IncomeFrequency';
 
 const RootComponent: React.FC = () => {
     return (
@@ -18,11 +19,11 @@ const RootComponent: React.FC = () => {
                 <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
                 <Route path={ROUTES.YEAR_ROUTE} element={<Year />} />
                 <Route path={ROUTES.STATUS_ROUTE} element={<Status />} />
-                <Route path={ROUTES.INCOMES_ROUTE} element={<Incomes />} />
-
+                <Route path={ROUTES.INCOMES_LABEL_ROUTE} element={<IncomeLabel />} />
+                <Route path={ROUTES.INCOMES_FREQUENCY_ROUTE} element={<IncomeFrequency />} />
             </Routes>
         </Router>
-    )
-}
+    );
+};
 
-export default RootComponent
+export default RootComponent;

@@ -1,12 +1,13 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store/store";
-import { updateFilingStatus } from "../store/slices/statusSlice";
-import { ROUTES } from '../resources/routes-constants'
 import { useNavigate } from 'react-router-dom'
 
 import SimpleInput from "../components/SimpleInput";
+
+import { RootState } from "../store/store";
+import { updateFilingStatus } from "../store/slices/statusSlice";
+import { ROUTES } from '../resources/routes-constants'
 
 const Status = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Status = () => {
     navigate(ROUTES.YEAR_ROUTE);
   };
   const redirectToIncomes = () => {
-    navigate(ROUTES.INCOMES_ROUTE);
+    navigate(ROUTES.INCOMES_ROUTE + "/0/label");
   };
 
   return (
