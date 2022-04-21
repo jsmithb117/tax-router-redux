@@ -45,30 +45,16 @@ const IncomeSource = () => {
       `${ROUTES.INCOMES_ROUTE}/${incomeId}/frequency`
     );
   };
-  // const redirectToSalaryOrPay = () => {
-  //   console.log('source', source);
-  //   if (source === 'salary') {
-  //     navigate(
-  //       `${ROUTES.INCOMES_ROUTE}/${incomeId}/salary`
-  //     );
-  //   } else {
-  //     navigate(
-  //       `${ROUTES.INCOMES_ROUTE}/${incomeId}/pay`
-  //     );
-  //   }
-  // };
   const redirectToSalary = () => {
     navigate(
       `${ROUTES.INCOMES_ROUTE}/${incomeId}/salary`
     );
   };
-
   const redirectToPay = () => {
     navigate(
       `${ROUTES.INCOMES_ROUTE}/${incomeId}/pay`
     );
   };
-
 
   return (
     <div className="input-source">
@@ -100,7 +86,6 @@ const IncomeSource = () => {
       </FormControl>
     <NavButtons
       prevHandler={redirectToFrequency}
-
     />
     </div>
   )
