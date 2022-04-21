@@ -59,5 +59,8 @@ export const {
 
 export const selectIncomes = (state: RootState) => state.incomes.incomes;
 export const selectIncomeLabel = (id: number) => (state: RootState) => state.incomes.incomes[id].label;
+export const selectIncomeFrequency = (id: number) => (state: RootState) => state.incomes.incomes[id].frequency;
+export const selectIncomeFrequencyLookup = (state: RootState) => state.incomes.lookupTable;
+export const selectIncomeFrequencyOptions = (state: RootState) => state.incomes.options;
 
 export default incomesSlice.reducer;

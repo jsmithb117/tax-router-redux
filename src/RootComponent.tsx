@@ -10,6 +10,7 @@ import Year from './pages/Year'
 import Status from './pages/Status';
 import IncomeLabel from './pages/IncomeLabel';
 import IncomeFrequency from './pages/IncomeFrequency';
+import IncomeSource from './pages/IncomeSource';
 
 const RootComponent: React.FC = () => {
     return (
@@ -21,6 +22,7 @@ const RootComponent: React.FC = () => {
                 <Route path={ROUTES.STATUS_ROUTE} element={<Status />} />
                 <Route path={ROUTES.INCOMES_LABEL_ROUTE} element={<IncomeLabel />} />
                 <Route path={ROUTES.INCOMES_FREQUENCY_ROUTE} element={<IncomeFrequency />} />
+                <Route path={ROUTES.INCOMES_SOURCE} element={<IncomeSource />} />
             </Routes>
         </Router>
     );

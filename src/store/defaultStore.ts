@@ -1,3 +1,9 @@
+//used for StatusStore and IncomesStore
+interface LookupTable {
+  [key: string]: string;
+}
+//used for StatusStore and IncomesStore
+
 // year
 export const yearStore = {
   filingYear: "2021",
@@ -9,9 +15,6 @@ export const yearStore = {
 // year
 
 // status
-interface LookupTable {
-  [key: string]: string;
-}
 interface StatusStore {
   filingStatus: string;
   options: string[];
@@ -40,7 +43,21 @@ export const statusStore: StatusStore = {
 
 
 //incomes
-export const incomesStore = {
+interface Income {
+  id: number;
+  label: string;
+  salary: number;
+  frequency: string;
+  incomeSource: string;
+  pay: number;
+  withholding: number;
+}
+interface IncomesStore {
+  incomes: Income[];
+  options: string[];
+  lookupTable: LookupTable;
+}
+export const incomesStore: IncomesStore = {
   incomes: [{
     id: 0,
     label: "Income 1",
@@ -50,6 +67,22 @@ export const incomesStore = {
     pay: 0,
     withholding: 0,
   }],
+  options: [
+    "Weekly",
+    "Every other week",
+    "Twice a month",
+    "Monthly",
+  ],
+  lookupTable: {
+    "weekly": "Weekly",
+    "biweekly": "Every other week",
+    "semimonthly": "Twice a month",
+    "monthly": "Monthly",
+    "Weekly": "weekly",
+    "Every other week": "biweekly",
+    "Twice a month": "semimonthly",
+    "Monthly": "monthly",
+  }
 };
 //incomes
 
