@@ -35,7 +35,7 @@ export const incomesSlice = createSlice({
       state.incomes[action.payload.incomeId].frequency = action.payload.frequency;
     },
     updateIncomeSource: (state, action) => {
-      state.incomes[action.payload.incomeId].incomeSource = action.payload.incomeSource;
+      state.incomes[action.payload.incomeId].incomeSource = action.payload.source;
     },
     updatePay: (state, action) => {
       state.incomes[action.payload.incomeId].pay = action.payload.pay;
@@ -62,5 +62,13 @@ export const selectIncomeLabel = (id: number) => (state: RootState) => state.inc
 export const selectIncomeFrequency = (id: number) => (state: RootState) => state.incomes.incomes[id].frequency;
 export const selectIncomeFrequencyLookup = (state: RootState) => state.incomes.lookupTable;
 export const selectIncomeFrequencyOptions = (state: RootState) => state.incomes.options;
+export const selectIncomeSource = (id: number) => (state: RootState) => state.incomes.incomes[id].incomeSource;
+export const selectPay = (id: number) => (state: RootState) => {
+  return state.incomes.incomes[id].pay;
+}
+export const selectSalary = (id: number) => (state: RootState) => {
+  return state.incomes.incomes[id].salary;
+}
+export const selectWithholding = (id: number) => (state: RootState) => state.incomes.incomes[id].withholding;
 
 export default incomesSlice.reducer;
