@@ -25,7 +25,6 @@ const IncomeLabel = () => {
   const incomeLabel = useSelector(selectIncomeLabel(incomeId));
 
   const changeHandler = (e: any) => {
-    console.log(typeof e)
     const label = e.target.value;
     dispatch(
       updateIncomeLabel({ incomeId, label })

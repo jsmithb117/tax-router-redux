@@ -37,7 +37,7 @@ const IncomeFrequency = () => {
     navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/label");
   };
   const redirectToIncomeSource = () => {
-    navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/incomesource");
+    navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/source");
   };
 
   return (

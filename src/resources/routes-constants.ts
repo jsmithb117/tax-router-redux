@@ -5,8 +5,9 @@ export const ROUTES = {
     INCOMES_ROUTE: '/incomes',
     INCOMES_LABEL_ROUTE: '/incomes/:incomeIdString/label',
     INCOMES_FREQUENCY_ROUTE: '/incomes/:incomeIdString/frequency',
-    INCOMES_SOURCE: '/incomes/:incomeIdString/incomeSource',
+    INCOMES_SOURCE: '/incomes/:incomeIdString/source',
     INCOMES_PAY: '/incomes/:incomeIdString/pay',
     INCOMES_SALARY: '/incomes/:incomeIdString/salary',
     INCOMES_WITHHOLDING: '/incomes/:incomeIdString/withholding',
+    INCOMES_DATES: '/incomes/:incomeIdString/dates',
 };
