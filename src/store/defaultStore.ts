@@ -51,6 +51,8 @@ interface Income {
   incomeSource: string;
   pay: number;
   withholding: number;
+  startDate: string;
+  endDate: string;
 }
 interface IncomesStore {
   incomes: Income[];
@@ -66,6 +68,8 @@ export const incomesStore: IncomesStore = {
     incomeSource: "salary",
     pay: 0,
     withholding: 0,
+    startDate: '2021-01-01',
+    endDate: '2021-12-31',
   }],
   options: [
     "Weekly",

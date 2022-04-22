@@ -10,4 +10,5 @@ export const ROUTES = {
     INCOMES_SALARY: '/incomes/:incomeIdString/salary',
     INCOMES_WITHHOLDING: '/incomes/:incomeIdString/withholding',
     INCOMES_DATES: '/incomes/:incomeIdString/dates',
+    INCOMES_ADDITIONAL: '/incomes/:incomeIdString/additional',
 };

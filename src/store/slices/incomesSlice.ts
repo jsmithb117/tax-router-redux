@@ -20,6 +20,10 @@ export const incomesSlice = createSlice({
         incomeSource: 'salary',
         pay: 0,
         withholding: 0,
+
+        // TODO: Move this to extraReducers and pull year from the year slice
+        startDate: '2021-01-01',
+        endDate: '2021-12-31',
       });
     },
     removeIncome: (state, action) => {
@@ -43,6 +47,12 @@ export const incomesSlice = createSlice({
     updateWithholding: (state, action) => {
       state.incomes[action.payload.incomeId].withholding = action.payload.withholding;
     },
+    updateStartDate: (state, action) => {
+      state.incomes[action.payload.incomeId].startDate = action.payload.startDate;
+    },
+    updateEndDate: (state, action) => {
+      state.incomes[action.payload.incomeId].endDate = action.payload.endDate;
+    },
   },
 });
 
@@ -55,6 +65,8 @@ export const {
   updateIncomeSource,
   updatePay,
   updateWithholding,
+  updateStartDate,
+  updateEndDate,
 } = incomesSlice.actions;
 
 export const selectIncomes = (state: RootState) => state.incomes.incomes;
@@ -63,12 +75,10 @@ export const selectIncomeFrequency = (id: number) => (state: RootState) => state
 export const selectIncomeFrequencyLookup = (state: RootState) => state.incomes.lookupTable;
 export const selectIncomeFrequencyOptions = (state: RootState) => state.incomes.options;
 export const selectIncomeSource = (id: number) => (state: RootState) => state.incomes.incomes[id].incomeSource;
-export const selectPay = (id: number) => (state: RootState) => {
-  return state.incomes.incomes[id].pay;
-}
-export const selectSalary = (id: number) => (state: RootState) => {
-  return state.incomes.incomes[id].salary;
-}
+export const selectPay = (id: number) => (state: RootState) => state.incomes.incomes[id].pay;
+export const selectSalary = (id: number) => (state: RootState) => state.incomes.incomes[id].salary;
 export const selectWithholding = (id: number) => (state: RootState) => state.incomes.incomes[id].withholding;
+export const selectStartDate = (id: number) => (state: RootState) => state.incomes.incomes[id].startDate;
+export const selectEndDate = (id: number) => (state: RootState) => state.incomes.incomes[id].endDate;
 
 export default incomesSlice.reducer;

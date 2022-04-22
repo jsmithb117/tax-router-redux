@@ -15,6 +15,7 @@ import IncomePay from './pages/IncomePay';
 import IncomeSalary from './pages/IncomeSalary';
 import IncomeWithholding from './pages/IncomeWithholding'
 import IncomeDates from './pages/IncomeDates';
+import IncomeAdditional from './pages/IncomeAdditional';
 
 const RootComponent: React.FC = () => {
     return (
@@ -31,6 +32,7 @@ const RootComponent: React.FC = () => {
                 <Route path={ROUTES.INCOMES_SALARY} element={<IncomeSalary />} />
                 <Route path={ROUTES.INCOMES_WITHHOLDING} element={<IncomeWithholding />} />
                 <Route path={ROUTES.INCOMES_DATES} element={<IncomeDates />} />
+                <Route path={ROUTES.INCOMES_ADDITIONAL} element={<IncomeAdditional />} />
             </Routes>
         </Router>
     );
