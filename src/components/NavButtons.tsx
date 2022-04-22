@@ -1,27 +1,36 @@
+// External function/data imports
 import React from "react";
 
+// External Component imports
+import Stack from "@mui/material/Stack";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
+// setup
 type NavButtonsProps = {
   prevHandler?: (() => void) | undefined;
   nextHandler?: (() => void) | undefined;
 }
 
-type Colors = "disabled" | "success";
-
 const NavButtons = ({ prevHandler, nextHandler }: NavButtonsProps) => {
-  const prevColor: Colors = prevHandler ? "success" : "disabled";
-  const nextColor: Colors = nextHandler ? "success" : "disabled";
+  const prevColor = prevHandler ? "success" : "disabled";
+  const nextColor = nextHandler ? "success" : "disabled";
 
   return (
     <div className="input-buttons">
-      <div className="input-prev">
-        <ArrowCircleLeftIcon color={prevColor} onClick={prevHandler} />
-      </div>
-      <div className="input-next">
-        <ArrowCircleRightIcon color={nextColor} onClick={nextHandler} />
-      </div>
+      <Stack
+        direction="row"
+        spacing={4}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <div className="input-prev">
+          <ArrowCircleLeftIcon color={prevColor} onClick={prevHandler} />
+        </div>
+        <div className="input-next">
+          <ArrowCircleRightIcon color={nextColor} onClick={nextHandler} />
+        </div>
+      </Stack>
     </div>
   )
 };
