@@ -4,11 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 // External Component imports
-import FormControl from "@mui/material/FormControl";
-import InputAdornment from "@mui/material/InputAdornment";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-
 // Internal function/data imports
 import {
   updateWithholding,
@@ -19,6 +14,7 @@ import { ROUTES } from '../resources/routes-constants'
 
 // Internal Component imports
 import NavButtons from "../components/NavButtons";
+import DollarInput from "../components/DollarInput";
 
 // setup
 
@@ -34,8 +30,7 @@ const IncomeWithholding = () => {
     selectIncomeSource(incomeId)
   );
 
-  const changeHandler = (e: any) => {
-    const withholding = e.target.value;
+  const changeHandler = (withholding: number) => {
     dispatch(
       updateWithholding({ incomeId, withholding })
     );
@@ -53,17 +48,11 @@ const IncomeWithholding = () => {
 
   return (
     <div className="input-income-withholding">
-      <FormControl sx={{ m: 1 }}>
-        <InputLabel htmlFor="component-outlined">Withholding</InputLabel>
-        <OutlinedInput
-          value={withholding}
-          onChange={changeHandler}
-          startAdornment={
-            <InputAdornment position="start">$</InputAdornment>
-          }
-          label={"label"}
-        />
-      </FormControl>
+      <DollarInput
+        label="Withholding"
+        value={withholding}
+        dataHandler={changeHandler}
+      />
       <NavButtons
         prevHandler={redirectToSource}
         nextHandler={redirectToIncomeDates}

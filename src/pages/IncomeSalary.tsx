@@ -24,11 +24,10 @@ const IncomeSalary = () => {
   const { incomeIdString } = useParams();
   const incomeId = parseInt(incomeIdString || "");
 
-  const salary = useSelector(selectSalary(incomeId)) || "";
+  const salary = useSelector(selectSalary(incomeId)) || 0;
 
-  const changeHandler = (e: any) => {
-    const newSalary = e.target.value;
-    dispatch(updateSalary({ incomeId, salary: newSalary }));
+  const changeHandler = (salary: number) => {
+    dispatch(updateSalary({ incomeId, salary }));
   };
   const redirectToSource = () => {
     navigate(
