@@ -1,16 +1,23 @@
+// External function/data imports
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+
+
+// External Component imports
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import TextField from "@mui/material/TextField";
 
+// Internal function/data imports
 import {
   updateIncomeLabel,
   selectIncomeLabel,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
 
+// Internal Component imports
+// setup
 type IncomeLabelParams = {
   incomeIdString?: string;
 }

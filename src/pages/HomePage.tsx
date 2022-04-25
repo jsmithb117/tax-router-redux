@@ -1,10 +1,15 @@
+// External function/data imports
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ROUTES } from '../resources/routes-constants'
-
+// External Component imports
 import Button from '@mui/material/Button';
 
+// Internal function/data imports
+import { ROUTES } from '../resources/routes-constants'
+
+// Internal Component imports
+// setup
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate()

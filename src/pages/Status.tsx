@@ -1,17 +1,23 @@
+// External function/data imports
 import React from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 
-import SimpleInput from "../components/SimpleInput";
-
+// External Component imports
+// Internal function/data imports
 import { getKeyValue } from "../utility/functions";
 import { updateFilingStatus, selectFilingStatus } from "../store/slices/statusSlice";
 import { ROUTES } from '../resources/routes-constants'
 
+// Internal Component imports
+import SimpleInput from "../components/SimpleInput";
+
+// setup
+
 const Status = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const status = useSelector(selectFilingStatus);
   const {
     filingStatus,
@@ -31,15 +37,15 @@ const Status = () => {
 
   return (
     <div className="input-status">
-    <SimpleInput
+      <SimpleInput
         label={"Filing Status"}
         value={getKeyValue(lookupTable, filingStatus)}
         options={options}
         dataHandler={clickHandler}
         prevHandler={redirectToYear}
         nextHandler={redirectToIncomes}
-    />
-  </div>
+      />
+    </div>
   )
 };
 

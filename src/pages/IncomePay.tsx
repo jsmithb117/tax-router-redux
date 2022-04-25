@@ -1,15 +1,21 @@
+// External function/data imports
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
-import DollarInput from "../components/DollarInput";
-import NavButtons from "../components/NavButtons";
-
+// External Component imports
+// Internal function/data imports
 import {
   selectPay,
   updatePay,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
+
+// Internal Component imports
+import DollarInput from "../components/DollarInput";
+import NavButtons from "../components/NavButtons";
+
+// setup
 
 const IncomePay = () => {
   const dispatch = useDispatch();

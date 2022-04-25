@@ -100,14 +100,12 @@ const IncomeDates = () => {
         >
           <Button
             variant="outlined"
-            // color={buttonColor}
             onClick={redirectToAdditional}
           >
             All Year
           </Button>
           <Button
             variant="outlined"
-            // color={buttonColor}
             onClick={partialYearHandler}
           >
             Partial Year

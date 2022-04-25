@@ -1,19 +1,23 @@
+// External function/data imports
 import React from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
+// External Component imports
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
+// Internal function/data imports
 import { selectIncomeFrequency, selectIncomeFrequencyLookup, selectIncomeFrequencyOptions, updateFrequency } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
 import { getKeyValue } from "../utility/functions";
 
+// Internal Component imports
 
+// setup
 type incomeIdStringParams = {
   incomeIdString?: string;
 }
@@ -30,7 +34,7 @@ const IncomeFrequency = () => {
   const options = useSelector(selectIncomeFrequencyOptions);
 
   const changeHandler = (event: any) => {
-    dispatch(updateFrequency({incomeId, frequency: getKeyValue(lookupTable, event.target.value)}));
+    dispatch(updateFrequency({ incomeId, frequency: getKeyValue(lookupTable, event.target.value) }));
   };
 
   const redirectToLabel = () => {

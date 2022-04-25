@@ -1,20 +1,26 @@
+// External function/data imports
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
+// External Component imports
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 
+// Internal function/data imports
 import {
   selectIncomeSource,
   updateIncomeSource,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
+
+// Internal Component imports
 import NavButtons from "../components/NavButtons";
 
+// setup
 type incomeIdStringParams = {
   incomeIdString?: string;
 }

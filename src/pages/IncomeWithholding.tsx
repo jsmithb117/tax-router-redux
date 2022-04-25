@@ -1,20 +1,26 @@
+// External function/data imports
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
+// External Component imports
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
-import { ROUTES } from '../resources/routes-constants'
+// Internal function/data imports
 import {
   updateWithholding,
   selectWithholding,
   selectIncomeSource,
 } from "../store/slices/incomesSlice";
+import { ROUTES } from '../resources/routes-constants'
 
+// Internal Component imports
 import NavButtons from "../components/NavButtons";
+
+// setup
 
 const IncomeWithholding = () => {
   const dispatch = useDispatch();
@@ -22,11 +28,11 @@ const IncomeWithholding = () => {
 
   const { incomeIdString } = useParams();
   const incomeId = parseInt(incomeIdString || "");
+
   const withholding = useSelector(selectWithholding(incomeId));
   const incomeSource = useSelector(
     selectIncomeSource(incomeId)
   );
-
 
   const changeHandler = (e: any) => {
     const withholding = e.target.value;
@@ -44,6 +50,7 @@ const IncomeWithholding = () => {
   const redirectToIncomeDates = () => {
     navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/dates");
   };
+
   return (
     <div className="input-income-withholding">
       <FormControl sx={{ m: 1 }}>

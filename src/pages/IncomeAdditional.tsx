@@ -1,5 +1,10 @@
+// External function/data imports
 import React from "react";
 
+// External Component imports
+// Internal function/data imports
+// Internal Component imports
+// setup
 const IncomeAdditional = () => {
   return (
     <>
