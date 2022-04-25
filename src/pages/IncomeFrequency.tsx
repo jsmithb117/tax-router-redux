@@ -35,6 +35,7 @@ const IncomeFrequency = () => {
 
   const changeHandler = (event: any) => {
     dispatch(updateFrequency({ incomeId, frequency: getKeyValue(lookupTable, event.target.value) }));
+    redirectToIncomeSource();
   };
 
   const redirectToLabel = () => {
