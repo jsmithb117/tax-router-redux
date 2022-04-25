@@ -8,6 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import {
   selectPay,
   updatePay,
+  updateSalary,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
 
@@ -27,6 +28,8 @@ const IncomePay = () => {
   const pay = useSelector(selectPay(incomeId)) || 0;
 
   const changeHandler = (pay: number) => {
+    // Resets salary if pay is updated so report can infer source of income data
+    dispatch(updateSalary({ incomeId, salary: 0 }));
     dispatch(updatePay({ incomeId, pay }));
   };
   const redirectToSource = () => {
