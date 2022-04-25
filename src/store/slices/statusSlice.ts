@@ -17,7 +17,7 @@ export const {
   updateFilingStatus,
 } = statusSlice.actions;
 
-export const selectFilingYear = (state: RootState) => state.year.filingYear;
-export const selectFilingStatus = (state: RootState) => state.status;
+export const selectStatus = (state: RootState) => state.status;
+export const selectFilingStatus = (state: RootState) => state.status.filingStatus;
 
 export default statusSlice.reducer;

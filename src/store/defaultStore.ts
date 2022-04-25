@@ -1,8 +1,4 @@
-//used for StatusStore and IncomesStore
-interface LookupTable {
-  [key: string]: string;
-}
-//used for StatusStore and IncomesStore
+import { LookupTable, IncomesStore } from '../types/incomes';
 
 // year
 export const yearStore = {
@@ -43,22 +39,6 @@ export const statusStore: StatusStore = {
 
 
 //incomes
-interface Income {
-  id: number;
-  label: string;
-  salary: number;
-  frequency: string;
-  incomeSource: string;
-  pay: number;
-  withholding: number;
-  startDate: string;
-  endDate: string;
-}
-interface IncomesStore {
-  incomes: Income[];
-  options: string[];
-  lookupTable: LookupTable;
-}
 export const incomesStore: IncomesStore = {
   incomes: [{
     id: 0,

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 // External Component imports
 // Internal function/data imports
 import { getKeyValue } from "../utility/functions";
-import { updateFilingStatus, selectFilingStatus } from "../store/slices/statusSlice";
+import { updateFilingStatus, selectStatus } from "../store/slices/statusSlice";
 import { ROUTES } from '../resources/routes-constants'
 
 // Internal Component imports
@@ -18,7 +18,7 @@ const Status = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const status = useSelector(selectFilingStatus);
+  const status = useSelector(selectStatus);
   const {
     filingStatus,
     options,
