@@ -20,6 +20,12 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      <h4>
+        This is not tax or financial advice. It is a tool to help you estimate your taxes.
+      </h4>
+      <h4>
+        Jay is not a tax professional, just a guy that loves to code.
+      </h4>
       <Button variant="outlined" onClick={redirectToYear}>Start estimating my taxes</Button>
     </>
   )
