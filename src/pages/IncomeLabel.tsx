@@ -5,8 +5,6 @@ import { useParams, useNavigate } from "react-router-dom";
 
 
 // External Component imports
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import TextField from "@mui/material/TextField";
 
 // Internal function/data imports
@@ -15,6 +13,7 @@ import {
   selectIncomeLabel,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
+import NavButtons from "../components/NavButtons";
 
 // Internal Component imports
 // setup
@@ -52,18 +51,12 @@ const IncomeLabel = () => {
         value={incomeLabel}
         onChange={changeHandler}
       />
-      <div className="input-prev">
-        <ArrowCircleLeftIcon color={"success"} onClick={redirectToStatus} />
-      </div>
-      <div className="input-next">
-        <ArrowCircleRightIcon color={"success"} onClick={redirectToIncomeFrequency} />
-      </div>
+      <NavButtons
+        prevHandler={redirectToStatus}
+        nextHandler={redirectToIncomeFrequency}
+      />
     </div>
   );
 };
 
-// TODO: for nextHandler, after all income properties have been set,
-//   if there is an income at state.incomes[id+1]
-//   redirect to /incomes/id+1
-//   else redirect to /report
 export default IncomeLabel;

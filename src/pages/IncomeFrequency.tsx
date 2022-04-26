@@ -7,8 +7,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 // Internal function/data imports
 import { selectIncomeFrequency, selectIncomeFrequencyLookup, selectIncomeFrequencyOptions, updateFrequency } from "../store/slices/incomesSlice";
@@ -16,6 +14,7 @@ import { ROUTES } from '../resources/routes-constants'
 import { getKeyValue } from "../utility/functions";
 
 // Internal Component imports
+import NavButtons from "../components/NavButtons";
 
 // setup
 type incomeIdStringParams = {
@@ -62,12 +61,10 @@ const IncomeFrequency = () => {
           );
         })}
       </Select>
-      <div className="input-prev">
-        <ArrowCircleLeftIcon color={"success"} onClick={redirectToLabel} />
-      </div>
-      <div className="input-next">
-        <ArrowCircleRightIcon color={"success"} onClick={redirectToIncomeSource} />
-      </div>
+      <NavButtons
+        prevHandler={redirectToLabel}
+        nextHandler={redirectToIncomeSource}
+      />
     </div>
   );
 };
