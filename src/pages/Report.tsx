@@ -9,6 +9,7 @@ import { selectFilingYear } from "../store/slices/yearSlice";
 import { selectFilingStatus } from "../store/slices/statusSlice";
 import { calculateIncomeFromPay, calculateIncomeFromSalary } from "../utility/calculateIncome";
 import rates from "../resources/rates";
+import { periodsPerYear } from "../utility/calculateIncome";
 
 // Internal Component imports
 // setup
@@ -20,7 +21,12 @@ const Report = () => {
 
   const [totalIncome, setTotalIncome] = useState(0);
   const [taxLiability, setTaxLiability] = useState(0);
+  const [totalWithheld, setTotalWithheld] = useState(0);
+  const [payFrequencies, setPayFrequencies] = useState<string[]>([]);
 
+  const withholdingTooMuch = taxLiability < totalWithheld;
+
+  // Calculate the total income
   useEffect(() => {
     let calculatedIncome = 0;
     incomes.forEach((income) => {
@@ -38,8 +44,8 @@ const Report = () => {
     setTotalIncome(calculatedIncome);
   }, [incomes, filingYear, filingStatus]);
 
+  // Calculates tax liability
   useEffect(() => {
-    // traverses tax brackets, calculating tax liability, until the taxable income is zero
     let taxableIncome = totalIncome;
     let estimatedTaxes = 0;
     let rateIndex = 0;
@@ -61,15 +67,58 @@ const Report = () => {
     setTaxLiability(estimatedTaxes);
   }, [totalIncome, filingYear, filingStatus]);
 
+  // Calculates total taxes withheld
+  useEffect(() => {
+    const count = incomes.reduce((acc, income) => {
+      return acc + (income.withholding * periodsPerYear[income.frequency]);
+    }, 0);
+    setTotalWithheld(count);
+  }, [incomes]);
+
+  // Sets frequencies of incomes
+  useEffect(() => {
+    const newFreqs: string[] = [];
+    incomes.forEach((income) => {
+      if (!newFreqs.includes(income.frequency)) {
+        newFreqs.push(income.frequency);
+      }
+    });
+    setPayFrequencies(newFreqs);
+  }, [incomes]);
+
   return <>
     <h1>Report</h1>
     <h1>
-      Total Income: ${totalIncome.toLocaleString()}
+      Total Estimated Income: ${totalIncome.toLocaleString()}
     </h1>
     <h2>
-      Tax Liability: ${taxLiability.toLocaleString(undefined,
+      Total Estimated Tax Liability: ${taxLiability.toLocaleString(undefined,
         { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
     </h2>
+    <h2>
+      Total Estimated Withheld: ${totalWithheld.toLocaleString()}
+    </h2>
+    <h2>
+      Estimated savings required: ${(taxLiability - totalWithheld).toLocaleString(undefined,
+        { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
+    </h2>
+    {withholdingTooMuch &&
+      <h2>
+        {"It doesn't appear that you need to save any additional money this year."}
+      </h2>
+      }
+    {!withholdingTooMuch &&
+      <h2>
+        Estimated savings required
+        {payFrequencies.map((freq) => {
+          return <div key={freq}>
+            <br />
+            {freq}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString()}
+          </div>
+        })}
+      </h2>
+    }
+
   </>
 };
 

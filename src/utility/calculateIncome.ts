@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 interface LookupTable {
   [key: string]: number;
 }
-const periodsPerYear: LookupTable = {
+export const periodsPerYear: LookupTable = {
   weekly: 52,
   biweekly: 26,
   semimonthly: 24,
