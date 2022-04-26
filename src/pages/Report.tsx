@@ -113,7 +113,8 @@ const Report = () => {
         {payFrequencies.map((freq) => {
           return <div key={freq}>
             <br />
-            {freq}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString()}
+            {freq}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString(undefined,
+        { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
           </div>
         })}
       </h2>
