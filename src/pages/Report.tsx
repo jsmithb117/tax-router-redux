@@ -10,6 +10,7 @@ import { selectFilingStatus } from "../store/slices/statusSlice";
 import { calculateIncomeFromPay, calculateIncomeFromSalary } from "../utility/calculateIncome";
 import rates from "../resources/rates";
 import { periodsPerYear } from "../utility/calculateIncome";
+import { selectIncomeFrequencyLookup } from "../store/slices/incomesSlice";
 
 // Internal Component imports
 // setup
@@ -18,6 +19,7 @@ const Report = () => {
   const incomes = useSelector(selectIncomes);
   const filingYear = useSelector(selectFilingYear);
   const filingStatus = useSelector(selectFilingStatus);
+  const incomeFrequencyLookup = useSelector(selectIncomeFrequencyLookup);
 
   const [totalIncome, setTotalIncome] = useState(0);
   const [taxLiability, setTaxLiability] = useState(0);
@@ -113,7 +115,7 @@ const Report = () => {
         {payFrequencies.map((freq) => {
           return <div key={freq}>
             <br />
-            {freq}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString(undefined,
+            {incomeFrequencyLookup[freq]}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString(undefined,
         { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
           </div>
         })}
