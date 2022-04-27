@@ -101,7 +101,7 @@ const Report = () => {
       Total Estimated Withheld: ${totalWithheld.toLocaleString()}
     </h2>
     <h2>
-      Estimated savings required: ${(taxLiability - totalWithheld).toLocaleString(undefined,
+      Total Savings Required: ${(taxLiability - totalWithheld).toLocaleString(undefined,
         { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
     </h2>
     {withholdingTooMuch &&
@@ -111,7 +111,7 @@ const Report = () => {
       }
     {!withholdingTooMuch &&
       <h2>
-        Estimated savings required
+        Estimated Savings Required Per Pay Period:
         {payFrequencies.map((freq) => {
           return <div key={freq}>
             <br />
