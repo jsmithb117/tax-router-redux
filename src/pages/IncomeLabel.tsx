@@ -45,11 +45,16 @@ const IncomeLabel = () => {
       updateIncomeLabel({ incomeId, label })
     );
   };
-  const redirectToStatus = () => {
+  const prevHandler = () => {
     setShow(false);
     // delay allows 'out' animation to complete prior to redirect
     setTimeout(() => {
-      navigate(ROUTES.STATUS_ROUTE);
+      const isFirstIncome = incomeId === 0;
+      if (isFirstIncome) {
+        navigate(ROUTES.STATUS_ROUTE);
+      } else {
+        navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId - 1) + "/dates");
+      }
     }, anim.out)
   };
   const redirectToIncomeFrequency = () => {
@@ -70,7 +75,7 @@ const IncomeLabel = () => {
           onChange={changeHandler}
         />
         <NavButtons
-          prevHandler={redirectToStatus}
+          prevHandler={prevHandler}
           nextHandler={redirectToIncomeFrequency}
         />
       </Fade>

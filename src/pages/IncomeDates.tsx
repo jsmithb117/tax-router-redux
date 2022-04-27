@@ -24,6 +24,7 @@ import {
   updateEndDate,
   selectStartDate,
   selectEndDate,
+  selectIncomesLength,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
 import anim from "../resources/animation-delay";
@@ -64,6 +65,7 @@ const IncomeDates = () => {
   // TODO: This functionality belongs in
   const startDate = parseISO(useSelector(selectStartDate(incomeId)) || "");
   const endDate = parseISO(useSelector(selectEndDate(incomeId)) || "");
+  const incomesLength = useSelector(selectIncomesLength);
   const partialYearHandler = () => {
     setDatesRequired(true);
   }
@@ -97,9 +99,27 @@ const IncomeDates = () => {
   const startDateHandler = (e: any) => {
     setStartDate(e);
   }
-  const nextHandler = startDateSet && endDateSet ? () => {
-    redirectToAdditional();
-  } : undefined;
+
+  const nextHandler = (() => {
+    const isNotLastIncome = incomesLength > incomeId + 1;
+    if (isNotLastIncome) {
+      return () => {
+        setShow(false);
+        setTimeout(() => {
+          navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId + 1) + "/label");
+        }, anim.out);
+      }
+    } else if (startDateSet && endDateSet) {
+      return () => {
+        setShow(false);
+        setTimeout(() => {
+          redirectToAdditional();
+        }, anim.out);
+      };
+    } else {
+      return undefined;
+    }
+  })();
 
   return (
     <>

@@ -80,5 +80,6 @@ export const selectSalary = (id: number) => (state: RootState) => state.incomes.
 export const selectWithholding = (id: number) => (state: RootState) => state.incomes.incomes[id].withholding;
 export const selectStartDate = (id: number) => (state: RootState) => state.incomes.incomes[id].startDate;
 export const selectEndDate = (id: number) => (state: RootState) => state.incomes.incomes[id].endDate;
+export const selectIncomesLength = (state: RootState) => state.incomes.incomes.length;
 
 export default incomesSlice.reducer;
