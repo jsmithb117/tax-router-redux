@@ -1,15 +1,17 @@
 // External function/data imports
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 // External Component imports
+import Fade from "react-reveal/Fade";
+
 // Internal function/data imports
 import {
   addIncome,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
-
+import anim from "../resources/animation-delay";
 
 // Internal Component imports
 import TwoButtons from "../components/TwoButtons";
@@ -24,29 +26,48 @@ const IncomeAdditional = () => {
   const { incomeIdString } = useParams();
   const incomeId = parseInt(incomeIdString || "");
 
+  const [show, setShow] = useState(false);
+
+  // for 'in' animation
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
   const button2Handler = () => {
-    dispatch(addIncome());
-    navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId + 1) + "/label");
+    setShow(false);
+    setTimeout(() => {
+      dispatch(addIncome());
+      navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId + 1) + "/label");
+    }, anim.out)
   };
   const handlePrev = () => {
-    navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId - 1) + "/dates");
+    setShow(false);
+    setTimeout(() => {
+      const conditionalId = incomeId === 0 ? 0 : incomeId - 1;
+      navigate(ROUTES.INCOMES_ROUTE + "/" + (conditionalId) + "/dates");
+    }, anim.out)
   };
   const handleNext = () => {
-    navigate(ROUTES.REPORT);
+    setShow(false);
+    setTimeout(() => {
+      navigate(ROUTES.REPORT);
+    }, anim.out)
   };
 
-    return (
+  return (
     <>
-    <TwoButtons
-      label1="No additional incomes"
-      label2="Add additional income"
-      button1Handler={handleNext}
-      button2Handler={button2Handler}
-    />
-    <NavButtons
-      prevHandler={handlePrev}
-      nextHandler={handleNext}
-    />
+      <Fade left opposite when={show}>
+        <TwoButtons
+          label1="No additional incomes"
+          label2="Add additional income"
+          button1Handler={handleNext}
+          button2Handler={button2Handler}
+        />
+        <NavButtons
+          prevHandler={handlePrev}
+          nextHandler={handleNext}
+        />
+      </Fade>
     </>
   )
 };
