@@ -27,9 +27,7 @@ const Year = () => {
 
   // for 'in' animation
   useEffect(() => {
-    // setTimeout(() => {
       setShow(true);
-    // }, anim.in);
   }, []);
 
   const clickHandler = (val: string) => {
