@@ -10,6 +10,7 @@ import Fade from 'react-reveal/Fade';
 import { RootState } from "../store/store";
 import { updateFilingYear } from "../store/slices/yearSlice";
 import { ROUTES } from '../resources/routes-constants'
+import anim from "../resources/animation-delay";
 
 // Internal Component imports
 import SimpleInput from "../components/SimpleInput";
@@ -24,19 +25,22 @@ const Year = () => {
 
   const [show, setShow] = React.useState(false);
 
+  // for 'in' animation
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       setShow(true);
-    }, 150);
-  }, [])
+    // }, anim.in);
+  }, []);
+
   const clickHandler = (val: string) => {
     dispatch(updateFilingYear(val));
   };
   const redirectToStatus = () => {
     setShow(false);
+    // delay allows 'out' animation to complete prior to redirect
     setTimeout(() => {
       navigate(ROUTES.STATUS_ROUTE);
-    }, 500)
+    }, anim.out)
   };
 
   return (
