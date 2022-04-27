@@ -17,8 +17,8 @@ interface IProps {
   value: string;
   options: string[];
   dataHandler: (e: string) => void;
-  prevHandler: () => void;
-  nextHandler: () => void;
+  prevHandler?: () => void;
+  nextHandler?: () => void;
 }
 const SimpleInput = ({
   label,

@@ -34,7 +34,6 @@ const Year = () => {
         value={year.filingYear}
         options={year.options}
         dataHandler={clickHandler}
-        prevHandler={() => {}}
         nextHandler={redirectToStatus}
       />
     </div>
