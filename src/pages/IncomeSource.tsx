@@ -1,5 +1,5 @@
 // External function/data imports
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import FormLabel from "@mui/material/FormLabel";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
+import Fade from 'react-reveal/Fade';
 
 // Internal function/data imports
 import {
@@ -16,6 +17,7 @@ import {
   updateIncomeSource,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
+import anim from "../resources/animation-delay";
 
 // Internal Component imports
 import NavButtons from "../components/NavButtons";
@@ -36,6 +38,13 @@ const IncomeSource = () => {
 
   const [radioChecked, setRadioChecked] = React.useState(false);
 
+  const [show, setShow] = useState(false);
+
+  // for 'in' animation
+  useEffect(() => {
+      setShow(true);
+  }, []);
+
   const changeHandler = (event: any) => {
     const newSource = event.target.value;
     dispatch(updateIncomeSource({ incomeId, source: newSource }));
@@ -47,52 +56,66 @@ const IncomeSource = () => {
     }
   };
   const redirectToFrequency = () => {
-    navigate(
-      `${ROUTES.INCOMES_ROUTE}/${incomeId}/frequency`
-    );
+    setShow(false);
+    // delay allows 'out' animation to complete prior to redirect
+    setTimeout(() => {
+      navigate(
+        `${ROUTES.INCOMES_ROUTE}/${incomeId}/frequency`
+      );
+    }, anim.out)
   };
   const redirectToSalary = () => {
-    navigate(
-      `${ROUTES.INCOMES_ROUTE}/${incomeId}/salary`
-    );
+    setShow(false);
+    // delay allows 'out' animation to complete prior to redirect
+    setTimeout(() => {
+      navigate(
+        `${ROUTES.INCOMES_ROUTE}/${incomeId}/salary`
+      );
+    }, anim.out)
   };
   const redirectToPay = () => {
-    navigate(
-      `${ROUTES.INCOMES_ROUTE}/${incomeId}/pay`
-    );
+    setShow(false);
+    // delay allows 'out' animation to complete prior to redirect
+    setTimeout(() => {
+      navigate(
+        `${ROUTES.INCOMES_ROUTE}/${incomeId}/pay`
+      );
+    }, anim.out)
   };
 
   return (
     <div className="input-source">
-      <FormControl>
-        <FormLabel id="controlled-radio-buttons-group">
-          I know my...
-        </FormLabel>
-        <div className="input-income-source">
-          <RadioGroup
-            aria-labelledby="controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
-            value={source}
-            onChange={changeHandler}
-          >
-            <FormControlLabel
-              value="salary"
-              checked={source === "salary" && radioChecked}
-              control={<Radio />}
-              label="Salary"
-            />
-            <FormControlLabel
-              value="pay"
-              checked={source === "pay" && radioChecked}
-              control={<Radio />}
-              label="Pay"
-            />
-          </RadioGroup>
-        </div>
-      </FormControl>
-    <NavButtons
-      prevHandler={redirectToFrequency}
-    />
+      <Fade left opposite when={show}>
+        <FormControl>
+          <FormLabel id="controlled-radio-buttons-group">
+            I know my...
+          </FormLabel>
+          <div className="input-income-source">
+            <RadioGroup
+              aria-labelledby="controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={source}
+              onChange={changeHandler}
+            >
+              <FormControlLabel
+                value="salary"
+                checked={source === "salary" && radioChecked}
+                control={<Radio />}
+                label="Salary"
+              />
+              <FormControlLabel
+                value="pay"
+                checked={source === "pay" && radioChecked}
+                control={<Radio />}
+                label="Pay"
+              />
+            </RadioGroup>
+          </div>
+        </FormControl>
+        <NavButtons
+          prevHandler={redirectToFrequency}
+        />
+      </Fade>
     </div>
   )
 };
