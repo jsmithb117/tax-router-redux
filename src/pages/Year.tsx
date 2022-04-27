@@ -1,5 +1,5 @@
 // External function/data imports
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 
@@ -23,7 +23,7 @@ const Year = () => {
 
   const year = useSelector((state: RootState) => state.year);
 
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
 
   // for 'in' animation
   useEffect(() => {
@@ -44,7 +44,6 @@ const Year = () => {
   return (
     <div className="input-year">
       <Fade left opposite when={show}>
-
         <SimpleInput
           label={"Tax Year"}
           value={year.filingYear}
