@@ -1,5 +1,5 @@
 // External function/data imports
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import dayjs from 'dayjs'
@@ -16,6 +16,7 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { BrowserView, MobileView } from "react-device-detect";
+import Fade from 'react-reveal/Fade';
 
 // Internal function/data imports
 import {
@@ -25,6 +26,7 @@ import {
   selectEndDate,
 } from "../store/slices/incomesSlice";
 import { ROUTES } from '../resources/routes-constants'
+import anim from "../resources/animation-delay";
 
 // Internal Component imports
 import NavButtons from "../components/NavButtons";
@@ -40,9 +42,15 @@ const IncomeDates = () => {
   const { incomeIdString } = useParams();
   const incomeId = parseInt(incomeIdString || "");
 
-  const [datesRequired, setDatesRequired] = React.useState(false);
-  const [startDateSet, setStartDateSet] = React.useState(false);
-  const [endDateSet, setEndDateSet] = React.useState(false);
+  const [datesRequired, setDatesRequired] = useState(false);
+  const [startDateSet, setStartDateSet] = useState(false);
+  const [endDateSet, setEndDateSet] = useState(false);
+  const [show, setShow] = useState(false);
+
+  // for 'in' animation
+  useEffect(() => {
+    setShow(true);
+  }, []);
 
   // Dates (and all class instances) are not directly serializeable
   //   and cannot properly be stored by Redux
@@ -53,10 +61,9 @@ const IncomeDates = () => {
   //   checks for serializability before it handles and dispatches the
   //   action and will throw an error
 
-  // TODO: This functionality belongs in middleware
+  // TODO: This functionality belongs in
   const startDate = parseISO(useSelector(selectStartDate(incomeId)) || "");
   const endDate = parseISO(useSelector(selectEndDate(incomeId)) || "");
-
   const partialYearHandler = () => {
     setDatesRequired(true);
   }
@@ -76,10 +83,16 @@ const IncomeDates = () => {
   }
 
   const redirectToWithholding = () => {
-    navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/withholding");
+    setShow(false);
+    setTimeout(() => {
+      navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/withholding");
+    }, anim.out);
   }
   const redirectToAdditional = () => {
-    navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/additional");
+    setShow(false);
+    setTimeout(() => {
+      navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/additional");
+    }, anim.out);
   }
   const startDateHandler = (e: any) => {
     setStartDate(e);
@@ -91,83 +104,92 @@ const IncomeDates = () => {
   return (
     <>
       <div className="input-income-plan">
-        I plan to work here...
-        <Stack
-          direction="row"
-          spacing={4}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Button
-            variant="outlined"
-            onClick={redirectToAdditional}
+        <Fade left opposite when={show}>
+          I plan to work here...
+          <Stack
+            direction="row"
+            spacing={4}
+            justifyContent="center"
+            alignItems="center"
           >
-            All Year
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={partialYearHandler}
-          >
-            Partial Year
-          </Button>
-        </Stack>
+            <Button
+              variant="outlined"
+              onClick={redirectToAdditional}
+            >
+              All Year
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={partialYearHandler}
+            >
+              Partial Year
+            </Button>
+          </Stack>
+        </Fade>
+
         {datesRequired &&
           <div className="input-income-plan-start">
-            Enter Start Date:
-            <div style={{ marginTop: 10 }}>
-
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <BrowserView>
-                  <DesktopDatePicker
-                    label="Start Date"
-                    inputFormat="MM/dd/yyyy"
-                    value={startDate}
-                    onChange={startDateHandler}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </BrowserView>
-
-                <MobileView>
-                  <MobileDatePicker
-                    label="End Date"
-                    inputFormat="MM/dd/yyyy"
-                    value={startDate}
-                    onChange={startDateHandler}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </MobileView>
-              </LocalizationProvider>
-            </div>
-            {startDateSet &&
+            <Fade left opposite when={show}>
+              Enter Start Date:
               <div style={{ marginTop: 10 }}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <BrowserView>
                     <DesktopDatePicker
                       label="Start Date"
                       inputFormat="MM/dd/yyyy"
-                      value={endDate}
-                      onChange={setEndDate}
+                      value={startDate}
+                      onChange={startDateHandler}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </BrowserView>
+
                   <MobileView>
                     <MobileDatePicker
                       label="End Date"
                       inputFormat="MM/dd/yyyy"
-                      value={endDate}
-                      onChange={setEndDate}
+                      value={startDate}
+                      onChange={startDateHandler}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </MobileView>
                 </LocalizationProvider>
               </div>
+            </Fade>
+
+            {startDateSet &&
+              <div style={{ marginTop: 10 }}>
+                <Fade left opposite when={show}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <BrowserView>
+                      <DesktopDatePicker
+                        label="Start Date"
+                        inputFormat="MM/dd/yyyy"
+                        value={endDate}
+                        onChange={setEndDate}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </BrowserView>
+                    <MobileView>
+                      <MobileDatePicker
+                        label="End Date"
+                        inputFormat="MM/dd/yyyy"
+                        value={endDate}
+                        onChange={setEndDate}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </MobileView>
+                  </LocalizationProvider>
+                </Fade>
+              </div>
             }
           </div>
         }
-        <NavButtons
-          prevHandler={redirectToWithholding}
-          nextHandler={nextHandler}
-        />
+        <Fade left opposite when={show}>
+          <NavButtons
+            prevHandler={redirectToWithholding}
+            nextHandler={nextHandler}
+          />
+        </Fade>
       </div>
     </>
   )
