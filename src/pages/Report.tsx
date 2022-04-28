@@ -77,15 +77,12 @@ const Report = () => {
     setTotalWithheld(count);
   }, [incomes]);
 
-  // Sets frequencies of incomes
+  // Sets frequencies of incomes to calculate estimated savings required using pay frequencies the user actually has
+  // i.e.: The user is paid weekly.  The user is unlikely to need to know how much to save per month, so we only render the weekly required savings estimate.
   useEffect(() => {
-    const newFreqs: string[] = [];
-    incomes.forEach((income) => {
-      if (!newFreqs.includes(income.frequency)) {
-        newFreqs.push(income.frequency);
-      }
-    });
-    setPayFrequencies(newFreqs);
+    const freqs: Set<string> = new Set();
+    incomes.forEach((income) => freqs.add(income.frequency));
+    setPayFrequencies(Array.from(freqs));
   }, [incomes]);
 
   return <>
