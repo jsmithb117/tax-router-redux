@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { selectIncomes } from "../store/slices/incomesSlice";
 import { selectFilingYear } from "../store/slices/yearSlice";
 import { selectFilingStatus } from "../store/slices/statusSlice";
-import { calculateIncomeFromPay, calculateIncomeFromSalary } from "../utility/calculateIncome";
+import { calculateIncomeFromPay, calculateIncomeFromSalary, calculateTotalWithheld } from "../utility/calculateIncome";
 import rates from "../resources/rates";
 import { periodsPerYear } from "../utility/calculateIncome";
 import { selectIncomeFrequencyLookup } from "../store/slices/incomesSlice";
@@ -72,7 +72,7 @@ const Report = () => {
   // Calculates total taxes withheld
   useEffect(() => {
     const count = incomes.reduce((acc, income) => {
-      return acc + (income.withholding * periodsPerYear[income.frequency]);
+      return acc + calculateTotalWithheld(income.frequency, income.withholding, income.startDate, income.endDate);
     }, 0);
     setTotalWithheld(count);
   }, [incomes]);
@@ -108,7 +108,7 @@ const Report = () => {
       <h2>
         {"It doesn't appear that you need to save any additional money this year."}
       </h2>
-      }
+    }
     {!withholdingTooMuch &&
       <h2>
         Estimated Savings Required Per Pay Period:
@@ -116,7 +116,7 @@ const Report = () => {
           return <div key={freq}>
             <br />
             {incomeFrequencyLookup[freq]}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString(undefined,
-        { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
+              { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
           </div>
         })}
       </h2>

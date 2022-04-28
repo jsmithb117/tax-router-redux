@@ -24,6 +24,16 @@ export const calculateIncomeFromSalary = (salary: number, frequency: string, sta
   return result;
 };
 
+export const calculateTotalWithheld = (
+  frequency: string,
+  withholding: number,
+  start: string,
+  end: string
+  ) => {
+  const percentageOfYearWorked = calculatePercentageOfYearWorked(start, end);
+  return parseFloat((withholding * percentageOfYearWorked * periodsPerYear[frequency]).toFixed(2));
+};
+
 const calculatePercentageOfYearWorked = (start: string, end: string) => {
   const startDate = dayjs(start);
   const endDate = dayjs(end);
