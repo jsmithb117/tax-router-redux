@@ -9,7 +9,7 @@ import Fade from 'react-reveal/Fade';
 // Internal function/data imports
 import { getKeyValue } from "../utility/functions";
 import { updateFilingStatus, selectStatus } from "../store/slices/statusSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import anim from "../resources/animation-delay";
 
 // Internal Component imports
@@ -38,13 +38,13 @@ const Status = () => {
     setShow(false);
     setTimeout(() => {
       navigate(ROUTES.YEAR_ROUTE);
-    }, anim.out)
+    }, anim.out);
   };
   const redirectToIncomes = () => {
     setShow(false);
     setTimeout(() => {
       navigate(ROUTES.INCOMES_ROUTE + "/0/label");
-    }, anim.out)
+    }, anim.out);
   };
 
   // for 'in' animation

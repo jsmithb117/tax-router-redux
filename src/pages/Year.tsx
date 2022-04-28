@@ -1,7 +1,7 @@
 // External function/data imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 // External Component imports
 import Fade from 'react-reveal/Fade';
@@ -9,7 +9,7 @@ import Fade from 'react-reveal/Fade';
 // Internal function/data imports
 import { RootState } from "../store/store";
 import { updateFilingYear } from "../store/slices/yearSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import anim from "../resources/animation-delay";
 
 // Internal Component imports
@@ -38,7 +38,7 @@ const Year = () => {
     // delay allows 'out' animation to complete prior to redirect
     setTimeout(() => {
       navigate(ROUTES.STATUS_ROUTE);
-    }, anim.out)
+    }, anim.out);
   };
 
   return (

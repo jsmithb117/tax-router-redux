@@ -12,7 +12,7 @@ import {
   updateSalary,
   updatePay,
 } from "../store/slices/incomesSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import anim from "../resources/animation-delay";
 
 // Internal Component imports
@@ -38,7 +38,7 @@ const IncomeSalary = () => {
   }, []);
 
   const changeHandler = (salary: number) => {
-    // Resets pay if salary is updated so report can infer source of income data
+    // Resets pay if salary is updated to avoid confusion
     dispatch(updatePay({ incomeId, pay: 0 }));
     dispatch(updateSalary({ incomeId, salary }));
   };
@@ -49,7 +49,7 @@ const IncomeSalary = () => {
       navigate(
         `${ROUTES.INCOMES_ROUTE}/${incomeId}/source`
       );
-    }, anim.out)
+    }, anim.out);
   };
   const redirectToWithholding = () => {
     setShow(false);
@@ -58,7 +58,7 @@ const IncomeSalary = () => {
       navigate(
         `${ROUTES.INCOMES_ROUTE}/${incomeId}/withholding`
       );
-    }, anim.out)
+    }, anim.out);
   };
 
   return (

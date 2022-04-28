@@ -11,8 +11,7 @@ import Select from "@mui/material/Select";
 import NavButtons from "./NavButtons";
 
 // setup
-
-interface IProps {
+interface ISimpleInputProps {
   label: string;
   value: string;
   options: string[];
@@ -20,6 +19,7 @@ interface IProps {
   prevHandler?: () => void;
   nextHandler?: () => void;
 }
+
 const SimpleInput = ({
   label,
   value,
@@ -27,7 +27,7 @@ const SimpleInput = ({
   dataHandler,
   prevHandler,
   nextHandler
-}: IProps) => {
+}: ISimpleInputProps) => {
   const selectLabel = `select-${label}`;
 
   const clickHandler = (val: string) => {

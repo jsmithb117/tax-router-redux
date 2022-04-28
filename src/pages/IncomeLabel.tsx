@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
-
 // External Component imports
 import TextField from "@mui/material/TextField";
 import Fade from 'react-reveal/Fade';
@@ -13,7 +12,7 @@ import {
   updateIncomeLabel,
   selectIncomeLabel,
 } from "../store/slices/incomesSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import NavButtons from "../components/NavButtons";
 import anim from "../resources/animation-delay";
 
@@ -28,15 +27,15 @@ const IncomeLabel = () => {
   const navigate = useNavigate();
 
   const { incomeIdString }: IncomeLabelParams = useParams();
-
   const incomeId = parseInt(incomeIdString || "");
+
   const incomeLabel = useSelector(selectIncomeLabel(incomeId));
 
   const [show, setShow] = useState(false);
 
-    // for 'in' animation
-    useEffect(() => {
-      setShow(true);
+  // for 'in' animation
+  useEffect(() => {
+    setShow(true);
   }, []);
 
   const changeHandler = (e: any) => {
@@ -55,14 +54,14 @@ const IncomeLabel = () => {
       } else {
         navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId - 1) + "/dates");
       }
-    }, anim.out)
+    }, anim.out);
   };
   const redirectToIncomeFrequency = () => {
     setShow(false);
     // delay allows 'out' animation to complete prior to redirect
     setTimeout(() => {
       navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/frequency");
-    }, anim.out)
+    }, anim.out);
   };
 
   return (

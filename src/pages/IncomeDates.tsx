@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import { parseISO } from 'date-fns';
 
 // External Component imports
@@ -26,7 +26,7 @@ import {
   selectEndDate,
   selectIncomesLength,
 } from "../store/slices/incomesSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import anim from "../resources/animation-delay";
 
 // Internal Component imports
@@ -62,13 +62,13 @@ const IncomeDates = () => {
   //   checks for serializability before it handles and dispatches the
   //   action and will throw an error
 
-  // TODO: This functionality belongs in
+  // TODO: This functionality belongs in middleware
   const startDate = parseISO(useSelector(selectStartDate(incomeId)) || "");
   const endDate = parseISO(useSelector(selectEndDate(incomeId)) || "");
   const incomesLength = useSelector(selectIncomesLength);
   const partialYearHandler = () => {
     setDatesRequired(true);
-  }
+  };
   const setStartDate = (date: any) => {
     // See above; We need to serialize the date prior to dispatching it to store
 
@@ -76,29 +76,29 @@ const IncomeDates = () => {
     const newStartDate = dayjs(date).utc().format('YYYY-MM-DD');
     dispatch(updateStartDate({ incomeId, startDate: newStartDate }));
     setStartDateSet(true);
-  }
+  };
   const setEndDate = (date: any) => {
     // TODO: This functionality belongs in middleware
     const newEndDate = dayjs(date).utc().format('YYYY-MM-DD');
     dispatch(updateEndDate({ incomeId, endDate: newEndDate }));
     setEndDateSet(true);
-  }
+  };
 
   const redirectToWithholding = () => {
     setShow(false);
     setTimeout(() => {
       navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/withholding");
     }, anim.out);
-  }
+  };
   const redirectToAdditional = () => {
     setShow(false);
     setTimeout(() => {
       navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/additional");
     }, anim.out);
-  }
+  };
   const startDateHandler = (e: any) => {
     setStartDate(e);
-  }
+  };
 
   const nextHandler = (() => {
     const isNotLastIncome = incomesLength > incomeId + 1;
@@ -108,7 +108,7 @@ const IncomeDates = () => {
         setTimeout(() => {
           navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId + 1) + "/label");
         }, anim.out);
-      }
+      };
     } else if (startDateSet && endDateSet) {
       return () => {
         setShow(false);
@@ -122,96 +122,94 @@ const IncomeDates = () => {
   })();
 
   return (
-    <>
-      <div className="input-income-plan">
-        <Fade left opposite when={show}>
-          I plan to work here...
-          <Stack
-            direction="row"
-            spacing={4}
-            justifyContent="center"
-            alignItems="center"
+    <div className="input-income-plan">
+      <Fade left opposite when={show}>
+        I plan to work here...
+        <Stack
+          direction="row"
+          spacing={4}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Button
+            variant="outlined"
+            onClick={redirectToAdditional}
           >
-            <Button
-              variant="outlined"
-              onClick={redirectToAdditional}
-            >
-              All Year
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={partialYearHandler}
-            >
-              Partial Year
-            </Button>
-          </Stack>
-        </Fade>
+            All Year
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={partialYearHandler}
+          >
+            Partial Year
+          </Button>
+        </Stack>
+      </Fade>
 
-        {datesRequired &&
-          <div className="input-income-plan-start">
-            <Fade left opposite when={show}>
-              Enter Start Date:
-              <div style={{ marginTop: 10 }}>
+      {datesRequired &&
+        <div className="input-income-plan-start">
+          <Fade left opposite when={show}>
+            Enter Start Date:
+            <div style={{ marginTop: 10 }}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <BrowserView>
+                  <DesktopDatePicker
+                    label="Start Date"
+                    inputFormat="MM/dd/yyyy"
+                    value={startDate}
+                    onChange={startDateHandler}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </BrowserView>
+
+                <MobileView>
+                  <MobileDatePicker
+                    label="End Date"
+                    inputFormat="MM/dd/yyyy"
+                    value={startDate}
+                    onChange={startDateHandler}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </MobileView>
+              </LocalizationProvider>
+            </div>
+          </Fade>
+
+          {startDateSet &&
+            <div style={{ marginTop: 10 }}>
+              <Fade left opposite when={show}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <BrowserView>
                     <DesktopDatePicker
                       label="Start Date"
                       inputFormat="MM/dd/yyyy"
-                      value={startDate}
-                      onChange={startDateHandler}
+                      value={endDate}
+                      onChange={setEndDate}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </BrowserView>
-
                   <MobileView>
                     <MobileDatePicker
                       label="End Date"
                       inputFormat="MM/dd/yyyy"
-                      value={startDate}
-                      onChange={startDateHandler}
+                      value={endDate}
+                      onChange={setEndDate}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </MobileView>
                 </LocalizationProvider>
-              </div>
-            </Fade>
-
-            {startDateSet &&
-              <div style={{ marginTop: 10 }}>
-                <Fade left opposite when={show}>
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <BrowserView>
-                      <DesktopDatePicker
-                        label="Start Date"
-                        inputFormat="MM/dd/yyyy"
-                        value={endDate}
-                        onChange={setEndDate}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </BrowserView>
-                    <MobileView>
-                      <MobileDatePicker
-                        label="End Date"
-                        inputFormat="MM/dd/yyyy"
-                        value={endDate}
-                        onChange={setEndDate}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </MobileView>
-                  </LocalizationProvider>
-                </Fade>
-              </div>
-            }
-          </div>
-        }
-        <Fade left opposite when={show}>
-          <NavButtons
-            prevHandler={redirectToWithholding}
-            nextHandler={nextHandler}
-          />
-        </Fade>
-      </div>
-    </>
+              </Fade>
+            </div>
+          }
+        </div>
+      }
+      <Fade left opposite when={show}>
+        <NavButtons
+          prevHandler={redirectToWithholding}
+          nextHandler={nextHandler}
+        />
+      </Fade>
+    </div>
   )
 };
 

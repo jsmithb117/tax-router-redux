@@ -50,17 +50,15 @@ const IncomeFrequency = () => {
     setShow(false);
     // delay allows 'out' animation to complete prior to redirect
     setTimeout(() => {
-      // navigate(ROUTES.STATUS_ROUTE);
       navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/label");
-    }, anim.out)
+    }, anim.out);
   };
   const redirectToIncomeSource = () => {
     setShow(false);
     // delay allows 'out' animation to complete prior to redirect
     setTimeout(() => {
-      // navigate(ROUTES.STATUS_ROUTE);
       navigate(ROUTES.INCOMES_ROUTE + "/" + incomeId + "/source");
-    }, anim.out)
+    }, anim.out);
   };
 
   return (

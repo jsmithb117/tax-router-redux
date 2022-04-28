@@ -12,7 +12,7 @@ import {
   selectWithholding,
   selectIncomeSource,
 } from "../store/slices/incomesSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import anim from "../resources/animation-delay";
 
 // Internal Component imports

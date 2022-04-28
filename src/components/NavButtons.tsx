@@ -7,12 +7,12 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 // setup
-interface IProps {
+interface INavButtonsProps {
   prevHandler?: () => void;
   nextHandler?: () => void;
 }
 
-const NavButtons = ({ prevHandler, nextHandler }: IProps) => {
+const NavButtons = ({ prevHandler, nextHandler }: INavButtonsProps) => {
   const prevColor = prevHandler ? "success" : "disabled";
   const nextColor = nextHandler ? "success" : "disabled";
 

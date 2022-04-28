@@ -16,7 +16,7 @@ import {
   selectIncomeSource,
   updateIncomeSource,
 } from "../store/slices/incomesSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import anim from "../resources/animation-delay";
 
 // Internal Component imports
@@ -36,13 +36,12 @@ const IncomeSource = () => {
 
   const source = useSelector(selectIncomeSource(incomeId)) || '';
 
-  const [radioChecked, setRadioChecked] = React.useState(false);
-
+  const [radioChecked, setRadioChecked] = useState(false);
   const [show, setShow] = useState(false);
 
   // for 'in' animation
   useEffect(() => {
-      setShow(true);
+    setShow(true);
   }, []);
 
   const changeHandler = (event: any) => {
@@ -62,7 +61,7 @@ const IncomeSource = () => {
       navigate(
         `${ROUTES.INCOMES_ROUTE}/${incomeId}/frequency`
       );
-    }, anim.out)
+    }, anim.out);
   };
   const redirectToSalary = () => {
     setShow(false);
@@ -71,7 +70,7 @@ const IncomeSource = () => {
       navigate(
         `${ROUTES.INCOMES_ROUTE}/${incomeId}/salary`
       );
-    }, anim.out)
+    }, anim.out);
   };
   const redirectToPay = () => {
     setShow(false);
@@ -80,7 +79,7 @@ const IncomeSource = () => {
       navigate(
         `${ROUTES.INCOMES_ROUTE}/${incomeId}/pay`
       );
-    }, anim.out)
+    }, anim.out);
   };
 
   return (
