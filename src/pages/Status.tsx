@@ -20,8 +20,6 @@ import SimpleInput from "../components/SimpleInput";
 const Status = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
   const status = useSelector(selectStatus);
   const {
     filingStatus,
@@ -52,11 +50,11 @@ const Status = () => {
     setShow(true);
   }, []);
 
-
   return (
     <div className="input-status">
       <Fade left opposite when={show}>
         <SimpleInput
+          testId="status-input"
           label={"Filing Status"}
           value={getKeyValue(lookupTable, filingStatus)}
           options={options}

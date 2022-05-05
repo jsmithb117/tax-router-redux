@@ -45,6 +45,7 @@ const Year = () => {
     <div className="input-year">
       <Fade left opposite when={show}>
         <SimpleInput
+          testId="year-input"
           label={"Tax Year"}
           value={year.filingYear}
           options={year.options}

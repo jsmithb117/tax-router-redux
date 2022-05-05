@@ -25,10 +25,18 @@ const NavButtons = ({ prevHandler, nextHandler }: INavButtonsProps) => {
         alignItems="center"
       >
         <div className="input-prev">
-          <ArrowCircleLeftIcon color={prevColor} onClick={prevHandler} />
+          <ArrowCircleLeftIcon
+            color={prevColor}
+            onClick={prevHandler}
+            data-testid="prev"
+            />
         </div>
         <div className="input-next">
-          <ArrowCircleRightIcon color={nextColor} onClick={nextHandler} />
+          <ArrowCircleRightIcon
+          color={nextColor}
+          onClick={nextHandler}
+          data-testid="next"
+          />
         </div>
       </Stack>
     </div>
