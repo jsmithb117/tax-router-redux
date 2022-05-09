@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
+import {useLocation} from 'react-router';
+
 // External Component imports
 import TextField from "@mui/material/TextField";
 import Fade from 'react-reveal/Fade';
@@ -26,9 +28,9 @@ const IncomeLabel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { incomeIdString }: IncomeLabelParams = useParams();
-  const incomeId = parseInt(incomeIdString || "");
-
+  // useParams doesn't work for testing TODO: remove useParams
+  const location = useLocation();
+  const incomeId = parseInt(location.pathname.split('/')[2]);
   const incomeLabel = useSelector(selectIncomeLabel(incomeId));
 
   const [show, setShow] = useState(false);
@@ -72,6 +74,7 @@ const IncomeLabel = () => {
           label={"Income Name"}
           value={incomeLabel}
           onChange={changeHandler}
+          data-testid="test-income-label"
         />
         <NavButtons
           prevHandler={prevHandler}
