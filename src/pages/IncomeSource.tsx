@@ -1,7 +1,8 @@
 // External function/data imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router';
 
 // External Component imports
 import FormControl from "@mui/material/FormControl";
@@ -23,16 +24,18 @@ import anim from "../resources/animation-delay";
 import NavButtons from "../components/NavButtons";
 
 // setup
-type incomeIdStringParams = {
-  incomeIdString?: string;
-}
+
+import { prettyDOM, logRoles } from '@testing-library/dom'
+
+
+
 
 const IncomeSource = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { incomeIdString }: incomeIdStringParams = useParams();
-  const incomeId = parseInt(incomeIdString || "");
+  const incomeIdString = useLocation().pathname.split('/')[2];
+  const incomeId = parseInt(incomeIdString);
 
   const source = useSelector(selectIncomeSource(incomeId)) || '';
 
@@ -43,16 +46,15 @@ const IncomeSource = () => {
   useEffect(() => {
     setShow(true);
   }, []);
-
   const changeHandler = (event: any) => {
     const newSource = event.target.value;
     dispatch(updateIncomeSource({ incomeId, source: newSource }));
     setRadioChecked(true);
-    if (newSource === "salary") {
-      redirectToSalary();
-    } else if (newSource === "pay") {
-      redirectToPay();
-    }
+    // if (newSource === "salary") {
+    //   redirectToSalary();
+    // } else if (newSource === "pay") {
+    //   redirectToPay();
+    // }
   };
   const redirectToFrequency = () => {
     setShow(false);
@@ -81,6 +83,35 @@ const IncomeSource = () => {
       );
     }, anim.out);
   };
+  const nextHandlerCreator = () => {
+    if (radioChecked && source === 'salary') {
+      console.log('redirect to salary');
+      return () => {
+        redirectToSalary()
+      }
+    } else if (radioChecked && source === 'pay') {
+      console.log('redirect to pay')
+      return () => {
+        redirectToPay();
+      }
+    } else {
+      console.log('do not redirect')
+      return () => {};
+    }
+  }
+
+  const salaryChecked = source === 'salary';
+  const payChecked = source === 'pay';
+
+  if (salaryChecked) {
+    console.log('salaryChecked')
+  } else if (payChecked) {
+    console.log('payChecked')
+  } else {
+    console.log('I have no idea')
+  }
+  const checked = document.getElementsByClassName('Mui-checked');
+  // console.log('1checked element: ', prettyDOM(checked.item(0) || undefined))
 
   return (
     <div className="input-source">
@@ -92,20 +123,30 @@ const IncomeSource = () => {
           <div className="input-income-source">
             <RadioGroup
               aria-labelledby="controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
+              name={`controlled-radio-buttons-group-${source}`}
               value={source}
               onChange={changeHandler}
             >
               <FormControlLabel
                 value="salary"
-                checked={source === "salary" && radioChecked}
-                control={<Radio />}
+                checked={salaryChecked}
+                control={<Radio
+                  value="salary"
+                  inputProps={{
+                    "aria-label": "salary",
+                  }}
+                />}
                 label="Salary"
               />
               <FormControlLabel
                 value="pay"
-                checked={source === "pay" && radioChecked}
-                control={<Radio />}
+                checked={payChecked}
+                control={<Radio
+                  value="pay"
+                  inputProps={{
+                    "aria-label": "pay",
+                  }}
+                />}
                 label="Pay"
               />
             </RadioGroup>
@@ -113,6 +154,7 @@ const IncomeSource = () => {
         </FormControl>
         <NavButtons
           prevHandler={redirectToFrequency}
+          nextHandler={nextHandlerCreator()}
         />
       </Fade>
     </div>
