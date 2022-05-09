@@ -1,9 +1,9 @@
-<h1 align="center">New React App</h1>
+<h1 align="center">Jay's Tax Estimator</h1>
 
 <br />
 
-This is a blank README file that you can customize at your needs.\
-Describe your project, how it works and how to contribute to it.
+A simple form to estimate your tax liability.\
+Useful if you have many incomes or are a 1099 contract employee.
 
 <br />
 
@@ -96,13 +96,5 @@ This is the structure of the files in the project:
     ├── README.md
     └── tsconfig.json
 ```
-
-# 📖 Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-#
 
 <p align="center">Bootstrapped with Create React App.</p>
