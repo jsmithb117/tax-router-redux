@@ -25,11 +25,6 @@ import NavButtons from "../components/NavButtons";
 
 // setup
 
-import { prettyDOM, logRoles } from '@testing-library/dom'
-
-
-
-
 const IncomeSource = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,11 +45,6 @@ const IncomeSource = () => {
     const newSource = event.target.value;
     dispatch(updateIncomeSource({ incomeId, source: newSource }));
     setRadioChecked(true);
-    // if (newSource === "salary") {
-    //   redirectToSalary();
-    // } else if (newSource === "pay") {
-    //   redirectToPay();
-    // }
   };
   const redirectToFrequency = () => {
     setShow(false);
@@ -85,33 +75,20 @@ const IncomeSource = () => {
   };
   const nextHandlerCreator = () => {
     if (radioChecked && source === 'salary') {
-      console.log('redirect to salary');
       return () => {
         redirectToSalary()
       }
     } else if (radioChecked && source === 'pay') {
-      console.log('redirect to pay')
       return () => {
         redirectToPay();
       }
     } else {
-      console.log('do not redirect')
       return () => {};
     }
   }
 
   const salaryChecked = source === 'salary';
   const payChecked = source === 'pay';
-
-  if (salaryChecked) {
-    console.log('salaryChecked')
-  } else if (payChecked) {
-    console.log('payChecked')
-  } else {
-    console.log('I have no idea')
-  }
-  const checked = document.getElementsByClassName('Mui-checked');
-  // console.log('1checked element: ', prettyDOM(checked.item(0) || undefined))
 
   return (
     <div className="input-source">
