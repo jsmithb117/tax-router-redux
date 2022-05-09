@@ -87,8 +87,8 @@ const IncomeSource = () => {
     }
   }
 
-  const salaryChecked = source === 'salary';
-  const payChecked = source === 'pay';
+  const salaryChecked = radioChecked && source === 'salary';
+  const payChecked = radioChecked && source === 'pay';
 
   return (
     <div className="input-source">
