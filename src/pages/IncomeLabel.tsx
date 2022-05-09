@@ -20,15 +20,11 @@ import anim from "../resources/animation-delay";
 
 // Internal Component imports
 // setup
-type IncomeLabelParams = {
-  incomeIdString?: string;
-}
 
 const IncomeLabel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // useParams doesn't work for testing TODO: remove useParams
   const location = useLocation();
   const incomeId = parseInt(location.pathname.split('/')[2]);
   const incomeLabel = useSelector(selectIncomeLabel(incomeId));
