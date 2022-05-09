@@ -1,9 +1,8 @@
 // External function/data imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
-
-import {useLocation} from 'react-router';
+import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router';
 
 // External Component imports
 import TextField from "@mui/material/TextField";

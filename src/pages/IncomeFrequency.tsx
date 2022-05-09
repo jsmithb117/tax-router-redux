@@ -1,7 +1,8 @@
 // External function/data imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router';
 
 // External Component imports
 import InputLabel from "@mui/material/InputLabel";
@@ -19,17 +20,13 @@ import anim from "../resources/animation-delay";
 import NavButtons from "../components/NavButtons";
 
 // setup
-type incomeIdStringParams = {
-  incomeIdString?: string;
-}
 
 const IncomeFrequency = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { incomeIdString }: incomeIdStringParams = useParams();
-  const incomeId = parseInt(incomeIdString || "");
-
+  const location = useLocation();
+  const incomeId = parseInt(location.pathname.split('/')[2]);
   const frequency = useSelector(selectIncomeFrequency(incomeId));
   const lookupTable = useSelector(selectIncomeFrequencyLookup);
   const options = useSelector(selectIncomeFrequencyOptions);
