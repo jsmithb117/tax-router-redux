@@ -67,7 +67,6 @@ describe('IncomeDates', () => {
     await user.click(partialYearButton)
     const startBox = screen.getByRole('textbox', { name: 'Start Date' })
     await user.type(startBox, '01/01/2021{tab}{Enter}{Escape}')
-    // await new Promise((r) => setTimeout(r, anim.out))
     const endBox = screen.getAllByTestId('CalendarIcon')[1]
     expect(endBox).toBeInTheDocument()
   })
