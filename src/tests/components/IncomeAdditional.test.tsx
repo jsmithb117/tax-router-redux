@@ -59,15 +59,15 @@ describe('IncomeAdditional', () => {
     await new Promise((r) => setTimeout(r, anim.out))
     expect(history.location.pathname).toBe('/incomes/1/label')
   })
-  // should redirect to /incomes/0/withholding when prevButton is clicked
-  test('should redirect to /incomes/0/withholding when prevButton is clicked', async () => {
+  // should redirect to /incomes/0/dates when prevButton is clicked
+  test('should redirect to /incomes/0/dates when prevButton is clicked', async () => {
     const { user, history } = setup()
     const prevButton = screen.getByTestId('prev')
     await user.click(prevButton)
     await new Promise((r) => setTimeout(r, anim.out))
-    expect(history.location.pathname).toBe('/incomes/0/withholding')
-    // should redirect to /report when nextButton is clicked
+    expect(history.location.pathname).toBe('/incomes/0/dates')
   })
+  // should redirect to /report when nextButton is clicked
   test('should redirect to /report when nextButton is clicked', async () => {
     const { user, history } = setup()
     const nextButton = screen.getByTestId('next')
