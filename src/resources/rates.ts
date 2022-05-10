@@ -9,9 +9,9 @@ interface TRate {
   id: number;
   taxRate: number;
   single: TStatus;
-  headOfHousehold: TStatus
-  marriedJoint: TStatus;
-  marriedSeparate: TStatus;
+  "head-of-household": TStatus
+  "married-joint": TStatus;
+  "married-separate": TStatus;
 }
 type Year = {
   label: number,
@@ -31,15 +31,15 @@ const rates: IRatesTable = {
           min: 0,
           max: 9950,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 0,
           max: 14200,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 0,
           max: 19900,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 0,
           max: 9950,
         },
@@ -51,15 +51,15 @@ const rates: IRatesTable = {
           min: 9950,
           max: 40525,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 14200,
           max: 54200,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 19900,
           max: 81050,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 9950,
           max: 40525,
         },
@@ -71,15 +71,15 @@ const rates: IRatesTable = {
           min: 40525,
           max: 86375,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 54200,
           max: 86350,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 81050,
           max: 172750,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 40525,
           max: 86375,
         },
@@ -91,15 +91,15 @@ const rates: IRatesTable = {
           min: 86375,
           max: 164925,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 86350,
           max: 164900,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 172750,
           max: 329850,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 86375,
           max: 164925,
         },
@@ -111,15 +111,15 @@ const rates: IRatesTable = {
           min: 164925,
           max: 209400,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 164900,
           max: 209425,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 329850,
           max: 418850,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 164925,
           max: 209400,
         },
@@ -131,15 +131,15 @@ const rates: IRatesTable = {
           min: 209400,
           max: 523600,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 209400,
           max: 523600,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 418850,
           max: 628300,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 209425,
           max: 314150,
         },
@@ -151,15 +151,15 @@ const rates: IRatesTable = {
           min: 523600,
           max: Infinity,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 523600,
           max: Infinity,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 628300,
           max: Infinity,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 314150,
           max: Infinity,
         },
@@ -176,15 +176,15 @@ const rates: IRatesTable = {
           min: 0,
           max: 10275,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 0,
           max: 14650,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 0,
           max: 20550,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 0,
           max: 10275,
         },
@@ -196,15 +196,15 @@ const rates: IRatesTable = {
           min: 10275,
           max: 41775,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 14650,
           max: 55900,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 20550,
           max: 83550,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 10275,
           max: 41775,
         },
@@ -216,15 +216,15 @@ const rates: IRatesTable = {
           min: 41775,
           max: 89075,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 55900,
           max: 89050,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 83550,
           max: 178150,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 41775,
           max: 89075,
         },
@@ -236,15 +236,15 @@ const rates: IRatesTable = {
           min: 89075,
           max: 170050,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 89050,
           max: 170050,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 178150,
           max: 340100,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 89075,
           max: 170050,
         },
@@ -256,15 +256,15 @@ const rates: IRatesTable = {
           min: 170050,
           max: 215950,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 170050,
           max: 215950,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 340100,
           max: 431900,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 170050,
           max: 215950,
         },
@@ -276,15 +276,15 @@ const rates: IRatesTable = {
           min: 215950,
           max: 539990,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 215950,
           max: 539900,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 431900,
           max: 647850,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 215950,
           max: 323925,
         },
@@ -296,15 +296,15 @@ const rates: IRatesTable = {
           min: 539990,
           max: Number.MAX_SAFE_INTEGER,
         },
-        headOfHousehold: {
+        "head-of-household": {
           min: 539900,
           max: Number.MAX_SAFE_INTEGER,
         },
-        marriedJoint: {
+        "married-joint": {
           min: 647850,
           max: Number.MAX_SAFE_INTEGER,
         },
-        marriedSeparate: {
+        "married-separate": {
           min: 323925,
           max: Number.MAX_SAFE_INTEGER,
         },
