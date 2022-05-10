@@ -39,10 +39,11 @@ describe('Status', () => {
     //   the way setup is written, it will not actually redirect,
     //   but it should modify the history object with the appropriate URL
     await user.click(screen.getByTestId('prev'))
+    // needs delay to wait for animation to complete
     await new Promise((r) => setTimeout(r, anim.out))
     expect(history.location.pathname).toBe('/incomes/0/frequency')
   })
-  test('should not redirect when next button is pressed until a source is selected', async () => {
+  test('should not redirect when next button is pressed if a source is not selected', async () => {
     const { user, history } = setup()
 
     // next button should not redirect
@@ -52,7 +53,6 @@ describe('Status', () => {
   })
   test('should redirect when next button is pressed after source is selected', async () => {
     const { user, history } = setup()
-    console.log('before history: ', history.location)
 
     // user clicks pay
     await user.click(screen.getByLabelText('pay'))
@@ -61,7 +61,6 @@ describe('Status', () => {
     // next button should redirect to /incomes/0/pay
     await user.click(screen.getByTestId('next'))
     await new Promise((r) => setTimeout(r, anim.out))
-    console.log('after history: ', history.location)
     expect(history.location.pathname).toBe('/incomes/0/pay')
 
     // user clicks salary
@@ -76,13 +75,19 @@ describe('Status', () => {
   test('should check buttons that are clicked', async () => {
     const { user } = setup()
 
-    const salary = screen.getByLabelText('salary');
-    const pay = screen.getByLabelText('pay');
+    const salary = screen.getByLabelText('salary')
+    const pay = screen.getByLabelText('pay')
 
     // user clicks pay
     await user.click(pay)
 
     expect(salary).not.toBeChecked()
     expect(pay).toBeChecked()
+
+    // user clicks pay
+    await user.click(salary)
+
+    expect(salary).toBeChecked()
+    expect(pay).not.toBeChecked()
   })
 })
