@@ -1,7 +1,8 @@
 // External function/data imports
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // External Component imports
 import Fade from "react-reveal/Fade";
@@ -23,8 +24,8 @@ const IncomeAdditional = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { incomeIdString } = useParams();
-  const incomeId = parseInt(incomeIdString || "");
+  const incomeIdString = useLocation().pathname.split('/')[2];
+  const incomeId = parseInt(incomeIdString);
 
   const [show, setShow] = useState(false);
 
