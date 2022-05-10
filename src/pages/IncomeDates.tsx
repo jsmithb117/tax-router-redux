@@ -1,7 +1,9 @@
 // External function/data imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router';
+
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import utc from 'dayjs/plugin/utc';
@@ -40,12 +42,11 @@ const IncomeDates = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { incomeIdString } = useParams();
+  const incomeIdString = useLocation().pathname.split('/')[2];
   const incomeId = parseInt(incomeIdString || "");
 
   const [datesRequired, setDatesRequired] = useState(false);
   const [startDateSet, setStartDateSet] = useState(false);
-  const [endDateSet, setEndDateSet] = useState(false);
   const [show, setShow] = useState(false);
 
   // for 'in' animation
@@ -81,7 +82,6 @@ const IncomeDates = () => {
     // TODO: This functionality belongs in middleware
     const newEndDate = dayjs(date).utc().format('YYYY-MM-DD');
     dispatch(updateEndDate({ incomeId, endDate: newEndDate }));
-    setEndDateSet(true);
   };
 
   const redirectToWithholding = () => {
@@ -109,15 +109,13 @@ const IncomeDates = () => {
           navigate(ROUTES.INCOMES_ROUTE + "/" + (incomeId + 1) + "/label");
         }, anim.out);
       };
-    } else if (startDateSet && endDateSet) {
+    } else {
       return () => {
         setShow(false);
         setTimeout(() => {
           redirectToAdditional();
         }, anim.out);
       };
-    } else {
-      return undefined;
     }
   })();
 
