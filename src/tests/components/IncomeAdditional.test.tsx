@@ -74,6 +74,5 @@ describe('IncomeAdditional', () => {
     await user.click(nextButton)
     await new Promise((r) => setTimeout(r, anim.out))
     expect(history.location.pathname).toBe('/report')
-    expect(true).toBeFalsy()
   })
 })
