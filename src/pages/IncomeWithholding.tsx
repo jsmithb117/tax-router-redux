@@ -27,7 +27,6 @@ const IncomeWithholding = () => {
   const navigate = useNavigate();
 
   const incomeIdString = useLocation().pathname.split('/')[2];
-  console.log('incomeIdString: ', incomeIdString);
   const incomeId = parseInt(incomeIdString || "");
 
   const withholding = useSelector(selectWithholding(incomeId)) || 0;
@@ -43,7 +42,6 @@ const IncomeWithholding = () => {
   }, []);
 
   const changeHandler = (withholding: number) => {
-    console.log('withholding: ', withholding);
     dispatch(
       updateWithholding({ incomeId, withholding })
     );
