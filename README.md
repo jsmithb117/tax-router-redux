@@ -5,12 +5,43 @@
 A simple form to estimate your tax liability.\
 Useful if you have many incomes or are a 1099 contract employee.
 
+## 🚧🏗  Don't mind the mess, Work in Progress!  🏗🚧
+
+## Next steps:
+### Finish writing tests for >90% coverage
+### Remove unused code/directories from create-react-app
+### Once project is ready to ship, add features with branches and pull requests
+   ### Next feature: Find and implement an API to GET tax brackets from instead of using hardcoded data
+
 <br />
+
+# 🛠 Available Scripts
+
+```
+npm install
+```
+
+or
+
+```
+yarn install
+```
 
 # 🚀 Available Scripts
 
 In the project directory, you can run:
 
+## 🛠 Installation
+
+
+```
+npm install
+```
+or
+
+```
+yarn install
+```
 <br />
 
 ## ⚡️ start
@@ -79,8 +110,11 @@ This is the structure of the files in the project:
     │   ├── store               # Redux store
     │   │   ├── actions         # store's actions
     │   │   └── reducers        # store's reducers
+    │   │   └── slices          # redux-toolkit slices
     │   ├── styles
     │   ├── tests               # all test files
+    │   │   ├── components      # component tests
+    │   │   └── pages           # page tests
     │   ├── types               # data interfaces
     │   ├── utility             # utilities functions and custom components
     │   ├── App.tsx
@@ -97,4 +131,4 @@ This is the structure of the files in the project:
     └── tsconfig.json
 ```
 
-<p align="center">Bootstrapped with Create React App.</p>
+<p align="center">Bootstrapped with Create React App using complete-web-app template.</p>
