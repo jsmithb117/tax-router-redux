@@ -79,4 +79,12 @@ describe('IncomeDates', () => {
       expect(history.location.pathname).toBe('/incomes/0/additional')
     })
   })
+  test('should redirect to /incomes/0/withholding when prev button is clicked', async() =>{
+    const { user, history } = setup()
+    await user.click(screen.getByTestId('prev'))
+    await new Promise((r) => setTimeout(r, anim.out + 100))
+    await waitFor(() => {
+      expect(history.location.pathname).toBe('/incomes/0/withholding')
+    })
+  })
 })
