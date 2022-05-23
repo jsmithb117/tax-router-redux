@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 // External Component imports
 import Fade from 'react-reveal/Fade';
+import InputLabel from "@mui/material/InputLabel";
 
 // Internal function/data imports
 import { getKeyValue } from "../utility/functions";
@@ -53,9 +54,11 @@ const Status = () => {
   return (
     <div className="input-status">
       <Fade left opposite when={show}>
+      <InputLabel id="simple-status-label">Filing Status</InputLabel>
+
         <SimpleInput
           testId="status-input"
-          label={"Filing Status"}
+          label={""}
           value={getKeyValue(lookupTable, filingStatus)}
           options={options}
           dataHandler={clickHandler}

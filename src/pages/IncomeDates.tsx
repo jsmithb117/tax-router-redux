@@ -19,6 +19,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { BrowserView, MobileView } from "react-device-detect";
 import Fade from 'react-reveal/Fade';
+import InputLabel from "@mui/material/InputLabel";
 
 // Internal function/data imports
 import {
@@ -122,7 +123,7 @@ const IncomeDates = () => {
   return (
     <div className="input-income-plan">
       <Fade left opposite when={show}>
-        I plan to work here...
+      <InputLabel id="simple-dates-label">I plan to work here...</InputLabel>
         <Stack
           direction="row"
           spacing={4}

@@ -7,6 +7,7 @@ import { useLocation } from 'react-router';
 // External Component imports
 import TextField from "@mui/material/TextField";
 import Fade from 'react-reveal/Fade';
+import InputLabel from "@mui/material/InputLabel";
 
 // Internal function/data imports
 import {
@@ -64,12 +65,12 @@ const IncomeLabel = () => {
   return (
     <div className="input-label">
       <Fade left opposite when={show}>
+      <InputLabel id="simple-name-label">Income Name</InputLabel>
         <TextField
-          sx={{ marginTop: "1rem" }}
-          label={"Income Name"}
           value={incomeLabel}
           onChange={changeHandler}
           data-testid="test-income-label"
+
         />
         <NavButtons
           prevHandler={prevHandler}

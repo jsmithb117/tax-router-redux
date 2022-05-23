@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 
 // External Component imports
 import Fade from "react-reveal/Fade";
+import InputLabel from "@mui/material/InputLabel";
 
 // Internal function/data imports
 import {
@@ -65,8 +66,8 @@ const IncomePay = () => {
   return (
     <div className="input-income-pay">
       <Fade left opposite when={show}>
+        <InputLabel id="simple-pay-label">Pay</InputLabel>
         <DollarInput
-          label="Pay"
           value={pay}
           dataHandler={changeHandler}
         />

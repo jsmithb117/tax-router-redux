@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 // External Component imports
 import Fade from 'react-reveal/Fade';
+import InputLabel from "@mui/material/InputLabel";
 
 // Internal function/data imports
 import { RootState } from "../store/store";
@@ -44,9 +45,10 @@ const Year = () => {
   return (
     <div className="input-year">
       <Fade left opposite when={show}>
+      <InputLabel id="simple-year-label">Tax Year</InputLabel>
         <SimpleInput
           testId="year-input"
-          label={"Tax Year"}
+          label={""}
           value={year.filingYear}
           options={year.options}
           dataHandler={clickHandler}

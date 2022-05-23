@@ -9,12 +9,11 @@ import InputAdornment from "@mui/material/InputAdornment";
 
 // setup
 interface IDollarInputProps {
-  label: string;
   value: number;
   dataHandler: (value: number) => void;
 }
 
-const DollarInput = ({ label, value, dataHandler }: IDollarInputProps) => {
+const DollarInput = ({ value, dataHandler }: IDollarInputProps) => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dataHandler(parseInt(e.target.value.replaceAll(',', '')));
   };
@@ -22,14 +21,12 @@ const DollarInput = ({ label, value, dataHandler }: IDollarInputProps) => {
   return (
     <>
       <FormControl sx={{ m: 1 }}>
-        <InputLabel>{label}</InputLabel>
         <OutlinedInput
           value={value.toLocaleString()}
           onChange={changeHandler}
           startAdornment={
             <InputAdornment position="start">$</InputAdornment>
           }
-          label={"label"}
         />
       </FormControl>
     </>
