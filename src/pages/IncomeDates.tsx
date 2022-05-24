@@ -163,7 +163,7 @@ const IncomeDates = () => {
 
                 <MobileView>
                   <MobileDatePicker
-                    label="End Date"
+                    label="Start Date"
                     inputFormat="MM/dd/yyyy"
                     value={startDate}
                     onChange={startDateHandler}
@@ -180,7 +180,7 @@ const IncomeDates = () => {
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <BrowserView>
                     <DesktopDatePicker
-                      label="Start Date"
+                      label="End Date"
                       inputFormat="MM/dd/yyyy"
                       value={endDate}
                       onChange={setEndDate}

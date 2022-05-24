@@ -73,12 +73,20 @@ describe('IncomeDates', () => {
 
   test('should redirect to /incomes/0/additional after endDate is entered and next button is clicked', async () => {
     const { user, history } = setup()
+
+    const partialYearButton = screen.getByRole('button', { name: 'Partial Year' })
+    await user.click(partialYearButton)
+    const startBox = screen.getByRole('textbox', { name: 'Start Date' })
+    await user.type(startBox, '01/01/2021{tab}{Enter}{Escape}')
+    const endBox = screen.getByRole('textbox', { name: 'End Date' })
+    await user.type(endBox, '12/31/2021{tab}{Enter}{Escape}')
     await user.click(screen.getByTestId('next'))
     await new Promise((r) => setTimeout(r, anim.out + 100))
     await waitFor(() => {
       expect(history.location.pathname).toBe('/incomes/0/additional')
     })
   })
+
   test('should redirect to /incomes/0/withholding when prev button is clicked', async() =>{
     const { user, history } = setup()
     await user.click(screen.getByTestId('prev'))
