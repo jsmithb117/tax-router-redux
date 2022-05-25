@@ -8,7 +8,7 @@ export const periodsPerYear: LookupTable = {
   biweekly: 26,
   semimonthly: 24,
   monthly: 12,
-}
+};
 
 type CalculateType = (pay: number, frequency: string, start: string, end: string) => number;
 

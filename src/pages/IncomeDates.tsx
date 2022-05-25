@@ -209,7 +209,7 @@ const IncomeDates = () => {
         />
       </Fade>
     </div>
-  )
+  );
 };
 
 export default IncomeDates;

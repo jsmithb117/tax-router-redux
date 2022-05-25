@@ -2,7 +2,6 @@
 import React from "react";
 
 // External Component imports
-import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -30,7 +29,7 @@ const DollarInput = ({ value, dataHandler }: IDollarInputProps) => {
         />
       </FormControl>
     </>
-  )
+  );
 };
 
 export default DollarInput;

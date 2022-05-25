@@ -76,16 +76,16 @@ const IncomeSource = () => {
   const nextHandlerCreator = () => {
     if (radioChecked && source === 'salary') {
       return () => {
-        redirectToSalary()
-      }
+        redirectToSalary();
+      };
     } else if (radioChecked && source === 'pay') {
       return () => {
         redirectToPay();
-      }
+      };
     } else {
       return () => {};
     }
-  }
+  };
 
   const salaryChecked = radioChecked && source === 'salary';
   const payChecked = radioChecked && source === 'pay';
@@ -135,7 +135,7 @@ const IncomeSource = () => {
         />
       </Fade>
     </div>
-  )
+  );
 };
 
 export default IncomeSource;

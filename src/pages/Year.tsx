@@ -56,7 +56,7 @@ const Year = () => {
         />
       </Fade>
     </div>
-  )
-}
+  );
+};
 
 export default Year;

@@ -12,7 +12,7 @@ import Fade from "react-reveal/Fade";
 
 // Internal function/data imports
 import { selectIncomeFrequency, selectIncomeFrequencyLookup, selectIncomeFrequencyOptions, updateFrequency } from "../store/slices/incomesSlice";
-import { ROUTES } from '../resources/routes-constants'
+import { ROUTES } from '../resources/routes-constants';
 import { getKeyValue } from "../utility/functions";
 import anim from "../resources/animation-delay";
 

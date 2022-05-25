@@ -40,7 +40,7 @@ const NavButtons = ({ prevHandler, nextHandler }: INavButtonsProps) => {
         </div>
       </Stack>
     </div>
-  )
+  );
 };
 
 export default NavButtons;

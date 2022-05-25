@@ -83,7 +83,7 @@ const IncomeWithholding = () => {
         />
       </Fade>
     </div>
-  )
+  );
 };
 
 export default IncomeWithholding;

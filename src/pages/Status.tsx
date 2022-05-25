@@ -1,7 +1,7 @@
 // External function/data imports
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 // External Component imports
 import Fade from 'react-reveal/Fade';
@@ -67,7 +67,7 @@ const Status = () => {
         />
       </Fade>
     </div>
-  )
+  );
 };
 
 export default Status;

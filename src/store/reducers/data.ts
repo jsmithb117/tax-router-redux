@@ -1,9 +1,9 @@
-import { ReducerData, ReduxActionData } from '../../types/reducers'
-import { DATA_ACTIONS } from '../actions/data'
+import { ReducerData, ReduxActionData } from '../../types/reducers';
+import { DATA_ACTIONS } from '../actions/data';
 
 const initialState: ReducerData = {
     contents: []
-}
+};
 
 const dataState: (state: ReducerData, action: ReduxActionData<any>) => ReducerData = (state = initialState, action: ReduxActionData<any>) => {
     switch (action.type) {
@@ -11,10 +11,10 @@ const dataState: (state: ReducerData, action: ReduxActionData<any>) => ReducerDa
             return {
                 ...state,
                 contents: action.payload
-            }
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default dataState
+export default dataState;

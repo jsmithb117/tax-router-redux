@@ -1,19 +1,19 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { ROUTES } from './resources/routes-constants'
-import './styles/main.sass'
+import { ROUTES } from './resources/routes-constants';
+import './styles/main.sass';
 
-import HomePage from './pages/HomePage'
-import NotFoundPage from './pages/NotFoundPage'
-import Year from './pages/Year'
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
+import Year from './pages/Year';
 import Status from './pages/Status';
 import IncomeLabel from './pages/IncomeLabel';
 import IncomeFrequency from './pages/IncomeFrequency';
 import IncomeSource from './pages/IncomeSource';
 import IncomePay from './pages/IncomePay';
 import IncomeSalary from './pages/IncomeSalary';
-import IncomeWithholding from './pages/IncomeWithholding'
+import IncomeWithholding from './pages/IncomeWithholding';
 import IncomeDates from './pages/IncomeDates';
 import IncomeAdditional from './pages/IncomeAdditional';
 import Report from './pages/Report';

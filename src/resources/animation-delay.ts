@@ -6,6 +6,6 @@ interface IAnim {
 const anim: IAnim = {
   in: 10,
   out: 500,
-}
+};
 
 export default anim;

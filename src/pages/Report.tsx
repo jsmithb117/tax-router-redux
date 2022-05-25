@@ -114,11 +114,11 @@ const Report = () => {
             <br />
             {incomeFrequencyLookup[freq]}: ${((taxLiability - totalWithheld) / periodsPerYear[freq]).toLocaleString(undefined,
               { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
-          </div>
+          </div>;
         })}
       </h2>
     }
-  </>
+  </>;
 };
 
 export default Report;

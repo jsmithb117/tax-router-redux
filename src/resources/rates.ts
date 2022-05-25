@@ -9,13 +9,13 @@ interface TRate {
   id: number;
   taxRate: number;
   single: TStatus;
-  "head-of-household": TStatus
+  "head-of-household": TStatus;
   "married-joint": TStatus;
   "married-separate": TStatus;
 }
 type Year = {
-  label: number,
-  rates: TRate[],
+  label: number;
+  rates: TRate[];
 }
 interface IRatesTable {
   [key: string]: Year;

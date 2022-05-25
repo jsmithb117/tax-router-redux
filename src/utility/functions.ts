@@ -4,7 +4,7 @@
  * @returns A kind greeting message
  */
 export const sayHello = (userName: string): string => {
-  return 'Welcome ' + userName + '!'
-}
+  return 'Welcome ' + userName + '!';
+};
 
-export const getKeyValue = function <T extends object, U extends keyof T>(obj: T, key: U) { return obj[key] };
+export const getKeyValue = function <T extends object, U extends keyof T>(obj: T, key: U) { return obj[key]; };

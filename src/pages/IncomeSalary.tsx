@@ -77,7 +77,7 @@ const IncomeSalary = () => {
         />
         </Fade>
     </div>
-  )
+  );
 };
 
 export default IncomeSalary;
