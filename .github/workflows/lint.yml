@@ -10,5 +10,4 @@ jobs:
       - name: Use current action
         uses: getsentry/action-eslint-fix@v1
         with:
-          files: src/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
