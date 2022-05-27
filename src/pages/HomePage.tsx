@@ -15,7 +15,7 @@ const HomePage= () => {
   const navigate = useNavigate();
 
   const redirectToYear = () => {
-    console.log('I am aware of the React errors in the Fade component.');;;;
+    console.log('I am aware of the React errors in the Fade component.');;;
     navigate(ROUTES.YEAR_ROUTE);
   };
 
