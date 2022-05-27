@@ -73,7 +73,6 @@ describe('IncomeDates', () => {
 
   test('should redirect to /incomes/0/additional after endDate is entered and next button is clicked', async () => {
     const { user, history } = setup();
-
     const partialYearButton = screen.getByRole('button', { name: 'Partial Year' });
     await user.click(partialYearButton);
     const startBox = screen.getByRole('textbox', { name: 'Start Date' });

@@ -22,6 +22,10 @@ const RootComponent: React.FC = () => {
     return (
         <Router>
             <Routes>
+              {/*
+              MegaLinter will complain about this.  It is safe to ignore.
+                It is detecting duplicate code.  I could create an array of path:component pairs to create this programatically, but duplicating the code is much more human readable.
+              */}
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
                 <Route path={ROUTES.YEAR_ROUTE} element={<Year />} />
