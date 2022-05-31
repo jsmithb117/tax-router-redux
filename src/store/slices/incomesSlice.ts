@@ -3,10 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { incomesStore } from '../defaultStore';
 import { RootState } from '../store';
 
-// Delete Me and my friends!
-import { current } from '@reduxjs/toolkit';
-// Delete Me and my friends!
-
 export const incomesSlice = createSlice({
   name: 'incomes',
   initialState: incomesStore,

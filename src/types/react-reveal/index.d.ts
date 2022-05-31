@@ -1,3 +1,5 @@
+import React from 'react';
+
 // types/react-reveal/index.d.ts
 /// <reference types="node" />
 
