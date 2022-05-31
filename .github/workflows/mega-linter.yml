@@ -33,7 +33,6 @@ jobs:
 
       # log stuff?
       - name: Log stuff
-        run: echo "$GITHUB_CONTEXT"
         run: echo ${{ github }}
 
       # MegaLinter
