@@ -31,6 +31,10 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      # log stuff?
+      - name: Log stuff
+        run: echo "$GITHUB_CONTEXT"
+
       # MegaLinter
       - name: MegaLinter
         id: ml
@@ -54,9 +58,6 @@ jobs:
             report
             mega-linter.log
 
-      # log stuff?
-      - name: Log stuff
-        run: echo "$GITHUB_CONTEXT"
 
       # Create pull request if applicable (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
